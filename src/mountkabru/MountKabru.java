@@ -6,6 +6,7 @@
 package mountkabru;
 
 import byui.cit260.mountKabru.model.Player;
+import byui.cit260.mountKabru.model.Scene;
 
 /**
  *
@@ -23,6 +24,12 @@ public class MountKabru {
         playerOne.setName("Micky Mouse");
         String playerInfo = playerOne.toString();
         System.out.println(playerInfo);
+        
+        Scene sceneOne = new Scene();
+        
+        sceneOne.setName("Forest");
+        String sceneInfo = sceneOne.toString();
+        System.out.println(sceneInfo);
     }
     
 }
