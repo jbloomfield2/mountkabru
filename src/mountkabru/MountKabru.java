@@ -8,6 +8,7 @@ package mountkabru;
 import byui.cit260.mountKabru.model.Player;
 import byui.cit260.mountKabru.model.Scene;
 import byui.cit260.mountKabru.model.Locations;
+import byui.cit260.mountKabru.model.Stats;
 
 /**
  *
