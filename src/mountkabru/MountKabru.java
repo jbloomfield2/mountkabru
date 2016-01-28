@@ -33,11 +33,13 @@ public class MountKabru {
         String sceneInfo = sceneOne.toString();
         System.out.println(sceneInfo);
         
-        Locations locationsOne = new Locations();
-        
-        locationsOne.setAreaName("Mount");
-        String locationsInfo = locationsOne.toString();
-        System.out.println(locationsInfo); 
+        Stats statOne = new Stats();
+        statOne.setHealth(50);
+        statOne.setMana(40);
+        statOne.setAttack(6);
+        statOne.setDefence(16);
+        String statInfo = statOne.toString();
+        System.out.println(statInfo);
     }
     
 }
