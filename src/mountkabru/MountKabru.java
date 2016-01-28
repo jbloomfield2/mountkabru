@@ -9,6 +9,8 @@ import byui.cit260.mountKabru.model.Player;
 import byui.cit260.mountKabru.model.Scene;
 import byui.cit260.mountKabru.model.Locations;
 import byui.cit260.mountKabru.model.Stats;
+import byui.cit260.mountKabru.model.Character;
+
 
 /**
  *
@@ -40,6 +42,13 @@ public class MountKabru {
         statOne.setDefence(16);
         String statInfo = statOne.toString();
         System.out.println(statInfo);
+        
+        Character charOne = new Character();
+        charOne.setName("john");
+        charOne.setLevel(1);
+        charOne.setAbilities("fireball, magic missile");
+        String charInfo = charOne.toString();
+        System.out.println(charInfo);
     }
     
 }
