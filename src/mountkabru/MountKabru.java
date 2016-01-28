@@ -7,6 +7,7 @@ package mountkabru;
 
 import byui.cit260.mountKabru.model.Player;
 import byui.cit260.mountKabru.model.Scene;
+import byui.cit260.mountKabru.model.Locations;
 
 /**
  *
@@ -30,6 +31,12 @@ public class MountKabru {
         sceneOne.setName("Forest");
         String sceneInfo = sceneOne.toString();
         System.out.println(sceneInfo);
+        
+        Locations locationsOne = new Locations();
+        
+        locationsOne.setAreaName("Mount");
+        String locationsInfo = locationsOne.toString();
+        System.out.println(locationsInfo); 
     }
     
 }
