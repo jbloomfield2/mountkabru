@@ -7,6 +7,7 @@ package mountkabru;
 
 import byui.cit260.mountKabru.model.Player;
 import byui.cit260.mountKabru.model.Scene;
+import byui.cit260.mountKabru.model.Stats;
 
 /**
  *
@@ -30,6 +31,14 @@ public class MountKabru {
         sceneOne.setName("Forest");
         String sceneInfo = sceneOne.toString();
         System.out.println(sceneInfo);
+        
+        Stats statOne = new Stats();
+        statOne.setHealth(50);
+        statOne.setMana(40);
+        statOne.setAttack(6);
+        statOne.setDefence(16);
+        String statInfo = statOne.toString();
+        System.out.println(statInfo);
     }
     
 }
