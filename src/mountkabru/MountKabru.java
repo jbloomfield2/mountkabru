@@ -46,6 +46,29 @@ public class MountKabru {
         actorOne.setAbilities("fireball, magic missile");
         String actInfo = actorOne.toString();
         System.out.println(actInfo);
-    }
+        
+        Ability abilityOne = new Ability();
+        
+        abilityOne.setAblitiyName("Pucnh");
+        String abilityInfo = abilityOne.toString();
+        System.out.println(abilityInfo);
+        
+        Blacksmith blacksmithOne = new Blacksmith();
+        
+        blacksmithOne.setArmorBonus("2");
+        String blacksmithInfo = blacksmithOne.toString();
+        System.out.println(blacksmithInfo);
+        
+        ThePit thePitOne = new ThePit();
+        
+        thePitOne.setTitle("Yes");
+        String thePitInfo = thePitOne.toString();
+        System.out.println(thePitInfo);
+        
+        Tavern tavernOne = new Tavern();
+        
+        tavernOne.setOwnerResponses("How's it going?");
+        String tavernInfo = tavernOne.toString();
+        System.out.println(tavernInfo);
     
-}
+    }}
