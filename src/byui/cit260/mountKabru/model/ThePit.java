@@ -12,12 +12,13 @@ import java.util.Objects;
  *
  * @author Andrew
  */
-public class ThePit implements Serializable{
+public class ThePit extends Scene implements Serializable{
     
     private String title;
     private double trainingLimit;
 
     public ThePit() {
+        super();
     }
 
     public String getTitle() {
