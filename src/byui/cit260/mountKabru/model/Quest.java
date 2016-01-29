@@ -12,36 +12,36 @@ import java.util.Objects;
  */
 public class Quest implements Serializable {
     
-    private String quests;
-    private String acceptedQuests;
-    private String completed;
+    private String questName;
+    private String questDetails;
+    private String progress;
     private String reward;
 
     public Quest() {
     }
 
-    public String getQuests() {
-        return quests;
+    public String getQuestName() {
+        return questName;
     }
 
-    public void setQuests(String quests) {
-        this.quests = quests;
+    public void setQuestName(String questName) {
+        this.questName = questName;
     }
 
-    public String getAcceptedQuests() {
-        return acceptedQuests;
+    public String getQuestDetails() {
+        return questDetails;
     }
 
-    public void setAcceptedQuests(String acceptedQuests) {
-        this.acceptedQuests = acceptedQuests;
+    public void setQuestDetails(String questDetails) {
+        this.questDetails = questDetails;
     }
 
-    public String getCompleted() {
-        return completed;
+    public String getProgress() {
+        return progress;
     }
 
-    public void setCompleted(String completed) {
-        this.completed = completed;
+    public void setProgress(String progress) {
+        this.progress = progress;
     }
 
     public String getReward() {
@@ -54,11 +54,11 @@ public class Quest implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 89 * hash + Objects.hashCode(this.quests);
-        hash = 89 * hash + Objects.hashCode(this.acceptedQuests);
-        hash = 89 * hash + Objects.hashCode(this.completed);
-        hash = 89 * hash + Objects.hashCode(this.reward);
+        int hash = 5;
+        hash = 79 * hash + Objects.hashCode(this.questName);
+        hash = 79 * hash + Objects.hashCode(this.questDetails);
+        hash = 79 * hash + Objects.hashCode(this.progress);
+        hash = 79 * hash + Objects.hashCode(this.reward);
         return hash;
     }
 
@@ -74,13 +74,13 @@ public class Quest implements Serializable {
             return false;
         }
         final Quest other = (Quest) obj;
-        if (!Objects.equals(this.quests, other.quests)) {
+        if (!Objects.equals(this.questName, other.questName)) {
             return false;
         }
-        if (!Objects.equals(this.acceptedQuests, other.acceptedQuests)) {
+        if (!Objects.equals(this.questDetails, other.questDetails)) {
             return false;
         }
-        if (!Objects.equals(this.completed, other.completed)) {
+        if (!Objects.equals(this.progress, other.progress)) {
             return false;
         }
         if (!Objects.equals(this.reward, other.reward)) {
@@ -91,8 +91,10 @@ public class Quest implements Serializable {
 
     @Override
     public String toString() {
-        return "Quest{" + "quests=" + quests + ", acceptedQuests=" + acceptedQuests + ", completed=" + completed + ", reward=" + reward + '}';
+        return "Quest{" + "questName=" + questName + ", questDetails=" + questDetails + ", progress=" + progress + ", reward=" + reward + '}';
     }
+
+   
     
     
 }
