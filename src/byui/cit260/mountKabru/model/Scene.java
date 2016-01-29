@@ -15,7 +15,7 @@ public class Scene implements Serializable{
     
     private String name;
     private String blocked;
-    private String discription;
+    private String description;
     private String mapSymbol;
 
     public Scene() {
@@ -39,12 +39,12 @@ public class Scene implements Serializable{
         this.blocked = blocked;
     }
 
-    public String getDiscription() {
-        return discription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDiscription(String discription) {
-        this.discription = discription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getMapSymbol() {
@@ -60,7 +60,7 @@ public class Scene implements Serializable{
         int hash = 3;
         hash = 29 * hash + Objects.hashCode(this.name);
         hash = 29 * hash + Objects.hashCode(this.blocked);
-        hash = 29 * hash + Objects.hashCode(this.discription);
+        hash = 29 * hash + Objects.hashCode(this.description);
         hash = 29 * hash + Objects.hashCode(this.mapSymbol);
         return hash;
     }
@@ -83,7 +83,7 @@ public class Scene implements Serializable{
         if (!Objects.equals(this.blocked, other.blocked)) {
             return false;
         }
-        if (!Objects.equals(this.discription, other.discription)) {
+        if (!Objects.equals(this.description, other.description)) {
             return false;
         }
         if (!Objects.equals(this.mapSymbol, other.mapSymbol)) {
@@ -94,7 +94,7 @@ public class Scene implements Serializable{
 
     @Override
     public String toString() {
-        return "Scene{" + "name=" + name + ", blocked=" + blocked + ", discription=" + discription + ", mapSymbol=" + mapSymbol + '}';
+        return "Scene{" + "name=" + name + ", blocked=" + blocked + ", description=" + description + ", mapSymbol=" + mapSymbol + '}';
     }
     
     
