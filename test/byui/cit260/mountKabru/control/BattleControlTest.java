@@ -5,6 +5,7 @@
  */
 package byui.cit260.mountKabru.control;
 
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -103,5 +104,59 @@ public class BattleControlTest {
 
     }
     
+
+    @Test
+    public void testSpell() {
+        System.out.println("Test 1");
+        int mana = 5;
+        int manaBonus = 4;
+        int def = 3;
+        BattleControl instance = new BattleControl();
+        int expResult = 6;
+        int result = instance.spell(mana, manaBonus, def);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        
+        System.out.println("Test 2");
+        mana = 3;
+        manaBonus = 4;
+        def = 3;
+        expResult = 4;
+        result = instance.spell(mana, manaBonus, def);
+        assertEquals(expResult, result);
+        
+        System.out.println("Test 3");
+        mana = 1;
+        manaBonus = 0;
+        def = 2;
+        expResult = -1;
+        result = instance.spell(mana, manaBonus, def);
+        assertEquals(expResult, result);
+        
+        System.out.println("Test 4");
+        mana = 30;
+        manaBonus = 30;
+        def = 10;
+        expResult = 50;
+        result = instance.spell(mana, manaBonus, def);
+        assertEquals(expResult, result);
+        
+        System.out.println("Test 5");
+        mana = 30;
+        manaBonus = 40;
+        def = 10;
+        expResult = 60;
+        result = instance.spell(mana, manaBonus, def);
+        assertEquals(expResult, result);
+        
+        System.out.println("Test 6");
+        mana = 4;
+        manaBonus = 4;
+        def = 10;
+        expResult = 0;
+        result = instance.spell(mana, manaBonus, def);
+        assertEquals(expResult, result);
+    }
+
     
 }
