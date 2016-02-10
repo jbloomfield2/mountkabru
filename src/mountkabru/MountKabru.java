@@ -6,6 +6,7 @@
 package mountkabru;
 
 import byui.cit260.mountKabru.model.*;
+import byui.cit260.mountKabru.control.*;
 
 
 
@@ -102,5 +103,8 @@ public class MountKabru {
         firstQuest.setReward("50xp");
         String questStr = firstQuest.toString();
         System.out.println(questStr);
+        
+        
+        
     }
 }
