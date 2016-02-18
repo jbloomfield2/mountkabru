@@ -5,6 +5,10 @@
  */
 package byui.cit260.mountKabru.view;
 
+import byui.cit260.mountKabru.control.GameControl;
+import byui.cit260.mountKabru.model.Player;
+import java.util.Scanner;
+
 /**
  *
  * @author jacob bloomfield
@@ -47,7 +51,71 @@ public class StartProgramView {
     }
 
     public void displayStartProgramView() {
-        System.out.println("\n***displayStartProgramView function called***");
+        
+        boolean done = false; // set flag to not done
+        do{
+            //prompt for and get players name
+            String playersName = this.getPlayersName();
+            if (playersName.toUpperCase().equals("Q"))// user wants to quit
+                return; // exit the game
+            
+            //do the requested action and display the next vie
+            done=this.doAction(playersName);
+            
+        } while (!done);
+        }
+    private boolean doAction(String playersName) {
+        
+        if (playersName.length() < 2) {
+            System.out.println("\nInvalid player name:"
+                    + "The name must be greater than one character in length");
+            return false;
+        }
+        
+        // call createPlayer() control funtion
+        Player player = GameControl.createPlayer(playersName);
+        
+        if (player == null) { // if unsuccesful
+            System.out.println("\nError creating player.");
+            return false;
+        }
+        
+        // display next view
+        this.displayNextView();
+        
+        return true; // success !
+    }
+/**
+ * Prompt for and get the players name
+ * @return the name of the player
+ */
+    public String getPlayersName() {
+        
+        Scanner keyboard = new Scanner(System.in); // keyboard input stream
+        String value = "";
+        
+        boolean valid = false; // set flag to invalid value entered
+        while(!valid) { // while a vaild name has not been retrieved
+            
+            //promt for the player's name
+            System.out.println(this.promptMessage);
+            
+            value = keyboard.nextLine(); // get the name from the keyboard
+            value = value.trim();
+            
+            //if the name is invalid (less than one character in length)
+            if (value.length() < 1){
+                System.out.println("Invalid value - the value can not be blank");
+                continue; // and repeat again
+            }
+            valid = true; //set flag to end repetition
+        }
+        
+        return value; // return the value
+    }
+
+    private void displayNextView() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     
