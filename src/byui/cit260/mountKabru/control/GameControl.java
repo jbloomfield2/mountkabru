@@ -6,6 +6,7 @@
 package byui.cit260.mountKabru.control;
 
 import byui.cit260.mountKabru.model.Player;
+import mountkabru.MountKabru;
 
 /**
  *
@@ -14,7 +15,15 @@ import byui.cit260.mountKabru.model.Player;
 public class GameControl {
 
     public static Player createPlayer(String playersName) {
-        System.out.println("\n** createPlayer() function called**");
+        
+        if (playersName == null)
+            return null;
+        
+        Player player = new Player();
+        player.setName(playersName);
+        
+        MountKabru.setPlayer(player);
+        
         return new Player();
     }
     
