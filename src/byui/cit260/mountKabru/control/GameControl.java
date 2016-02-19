@@ -24,7 +24,7 @@ public class GameControl {
         
         MountKabru.setPlayer(player);
         
-        return new Player();
+        return player;
     }
     
 }
