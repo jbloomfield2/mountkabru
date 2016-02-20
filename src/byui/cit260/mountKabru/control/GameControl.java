@@ -26,5 +26,9 @@ public class GameControl {
         
         return player;
     }
+
+    public static void createNewGame(Player player) {
+       System.out.println("***create new game method called***");
+    }
     
 }

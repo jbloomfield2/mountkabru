@@ -5,47 +5,49 @@
  */
 package byui.cit260.mountKabru.view;
 
-import byui.cit260.mountKabru.control.GameControl;
 import java.util.Scanner;
+
 
 /**
  *
- * @author Andrew
+ * @author jacob bloomfield
  */
-public class MainMenuView {
-    private String menu;
-    private boolean promptMessage;
-    
-    public MainMenuView(){
-        this.menu = "\n"
+class HelpMenuView {
+private String menu;
+
+
+    public HelpMenuView() {
+                this.menu = "\n"
               + "\n----------------------------------------"
-              + "\n| Main Menu                            |"
+              + "\n| Help Menu                            |"
               + "\n----------------------------------------"
-              + "\nN - Start new game"
-              + "\nG - Get and Start saved game"
-              + "\nH - Get help on how to play the game"
-              + "\nS - Save game"
-              + "\nQ - Quit"
+              + "\nG - What is the goal of the game?"
+              + "\nT - The town"
+              + "\nA - Adventuring"
+              + "\nI - Inventory"
+              + "\nQ - Go back"
               + "\n----------------------------------------";
-    
-}
-    
-    public void displayMainMenuView() {
+    }
+
+    void displayMenu() {
         
         boolean done= false; // set flag to not done
+        
         do {
             // prompt for and get players name
             String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals("Q")) // user wants to quit
-                return; // exit the game
+           
             
             // do the requested action and display the next view
             done = this.doAction(menuOption);
-            
-        } while (!done);
-        
         }
+        while (!done);         
+                  
+            
+    }
 
+    
+    
     private String getMenuOption() {
         Scanner keyboard = new Scanner(System.in); // keyboard input stream
         String value = "";
@@ -75,18 +77,20 @@ public class MainMenuView {
         choice = choice.toUpperCase(); // convert choice to upper case
         
         switch (choice){
-            case "N": // create and start a new game
-                this.startNewGame();
+            case "G": // Goal of game
+                System.out.println("Goal of game info");
                 break;
-            case "G": // display the help menu
-                this.startExistingGame();
+            case "T": // the town
+                System.out.println("The town info");
                 break;
-            case "H": // display the help menu
-                this.displayHelpMenu();
+            case "A": // Adventuring
+                System.out.println("Adventuring info");
                 break;
-            case "S":
-                this.saveGame();
+            case "I"://inventory
+                System.out.println("Inventory info");
                 break;
+            case "Q"://back to main menu
+                return true;
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
                 break;
@@ -95,24 +99,5 @@ public class MainMenuView {
         return false;
     }
 
-    private void startNewGame() {
-        GameControl.createNewGame(mountkabru.MountKabru.getPlayer());
-        
-        //display game menu
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
-    }
-
-    private void startExistingGame() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private void displayHelpMenu() {
-        HelpMenuView helpMenu = new HelpMenuView();
-        helpMenu.displayMenu();
-    }
-
-    private void saveGame() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 }
