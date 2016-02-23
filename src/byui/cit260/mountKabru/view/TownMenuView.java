@@ -5,46 +5,43 @@
  */
 package byui.cit260.mountKabru.view;
 
-import byui.cit260.mountKabru.control.GameControl;
 import java.util.Scanner;
 
 /**
  *
- * @author Andrew
+ * @author jacob bloomfield
  */
-public class MainMenuView {
+public class TownMenuView {
     private String menu;
-    private boolean promptMessage;
-    
-    public MainMenuView(){
+
+    public TownMenuView() {
         this.menu = "\n"
               + "\n----------------------------------------"
-              + "\n| Main Menu                            |"
+              + "\n| Welcome to the Town                            |"
               + "\n----------------------------------------"
-              + "\nN - Start new game"
-              + "\nG - Get and Start saved game"
-              + "\nH - Get help on how to play the game"
-              + "\nS - Save game"
-              + "\nQ - Quit"
+              + "\nA - go adventuring"
+              + "\nT - Visit the Tavern"
+              + "\nP - Train at the Pit"
+              + "\nB - Visit the Blacksmith"
+              + "\nM - Game Menu"
               + "\n----------------------------------------";
+    }
     
-}
     
-    public void displayMainMenuView() {
+
+     void displayMenu() {
+       boolean done= false; // set flag to not done
         
-        boolean done= false; // set flag to not done
         do {
             // prompt for and get players name
             String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals("Q")) // user wants to quit
-                return; // exit the game
+           
             
             // do the requested action and display the next view
             done = this.doAction(menuOption);
-            
-        } while (!done);
-        
         }
+        while (!done);
+    }
 
     private String getMenuOption() {
         Scanner keyboard = new Scanner(System.in); // keyboard input stream
@@ -70,49 +67,37 @@ public class MainMenuView {
         return value; // return the value
     }
 
-    public boolean doAction(String choice) {
-        
+    private boolean doAction(String choice) {
         choice = choice.toUpperCase(); // convert choice to upper case
         
         switch (choice){
-            case "N": // create and start a new game
-                this.startNewGame();
+            case "A": // adventure
+                System.out.println("AdventureView class");
                 break;
-            case "G": // display the help menu
-                this.startExistingGame();
+            case "T": // the tavern
+                System.out.println("TavernView class");
                 break;
-            case "H": // display the help menu
-                this.displayHelpMenu();
+            case "B": // Blacksmith
+                System.out.println("BlacksmithView class");
                 break;
-            case "S":
-                this.saveGame();
+            case "P"://Pit
+                System.out.println("ThePitView class");
                 break;
+            case "M"://show game menu
+                System.out.println("GameMenuView class");
+            break;
+                
+                
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
                 break;
         }
         
         return false;
-    }
-
-    private void startNewGame() {
-        GameControl.createNewGame(mountkabru.MountKabru.getPlayer());
         
-        //display game menu
-        TownMenuView town = new TownMenuView();
-        town.displayMenu();
     }
+}   
 
-    private void startExistingGame() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
+    
 
-    private void displayHelpMenu() {
-        HelpMenuView helpMenu = new HelpMenuView();
-        helpMenu.displayMenu();
-    }
-
-    private void saveGame() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-}
