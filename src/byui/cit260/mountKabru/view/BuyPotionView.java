@@ -5,43 +5,35 @@
  */
 package byui.cit260.mountKabru.view;
 
+import byui.cit260.mountKabru.model.Inventory;
 import java.util.Scanner;
-
 /**
  *
- * @author jacob bloomfield
+ * @author Andrew
  */
-public class TownMenuView {
-    private String menu;
-
-    public TownMenuView() {
-        this.menu = "\n"
-              + "\n----------------------------------------"
-              + "\n| Welcome to the Town                            |"
-              + "\n----------------------------------------"
-              + "\nA - go adventuring"
-              + "\nT - Visit the Tavern"
-              + "\nP - Train at the Pit"
-              + "\nB - Visit the Blacksmith"
-              + "\nM - Game Menu"
-              + "\n----------------------------------------";
+public class BuyPotionView {
+    private final String menu;
+    private boolean promptMessage;
+    
+    public BuyPotionView(){
+        this.menu = "\n Would you like to buy a Potion for 50 gold? Y/N";    
     }
     
-    
-
-     void displayMenu() {
-       boolean done= false; // set flag to not done
+    public void displayMenu() {
         
+        boolean done= false; // set flag to not done
         do {
             // prompt for and get players name
             String menuOption = this.getMenuOption();
-           
+            if (menuOption.toUpperCase().equals("Q")) // user wants to quit
+                return; // exit the game
             
             // do the requested action and display the next view
             done = this.doAction(menuOption);
+            
+        } while (!done);
+        
         }
-        while (!done);
-    }
 
     private String getMenuOption() {
         Scanner keyboard = new Scanner(System.in); // keyboard input stream
@@ -71,34 +63,33 @@ public class TownMenuView {
         choice = choice.toUpperCase(); // convert choice to upper case
         
         switch (choice){
-            case "A": // adventure
-                System.out.println("AdventureView class");
+            case "Y": // create and start a new game
+                this.addPotionToInv();
                 break;
-            case "T": // the tavern
-                TavernMenuView tavern = new TavernMenuView();
-                tavern.displayMenu();
-                break;
-            case "B": // Blacksmith
-                System.out.println("BlacksmithView class");
-                break;
-            case "P"://Pit
-                System.out.println("ThePitView class");
-                break;
-            case "M"://show game menu
-                System.out.println("GameMenuView class");
-            break;
-                
-                
-            default:
-                System.out.println("\n*** Invalid selection *** Try again");
-                break;
-        }
-        
+            case "N": // display the help menu
+                return true;
+            }
         return false;
-        
     }
-}   
-
-   
     
+    private void addPotionToInv() { 
+        
+                Inventory inv = new Inventory();
+                        
+                    if (inv.getShillings() < 50){
+                        System.out.println("\nCome back when you have enough money.");
+                    }
+                               
+                    if (inv.getShillings() > 50){
+                        System.out.println("\nThanks for your business. Good luck!");
+                    }
+        }
+
+    private void returnToTavernMenu() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    }
+
+    
+
 
