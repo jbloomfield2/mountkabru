@@ -98,9 +98,9 @@ public class MainMenuView {
     private void startNewGame() {
         GameControl.createNewGame(mountkabru.MountKabru.getPlayer());
         
-        //display game menu
-        TownMenuView town = new TownMenuView();
-        town.displayMenu();
+        //proceed to character creation
+        CharacterCreationView charCreate = new CharacterCreationView();
+        charCreate.display();
     }
 
     private void startExistingGame() {
