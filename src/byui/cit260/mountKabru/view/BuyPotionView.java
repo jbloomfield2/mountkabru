@@ -11,11 +11,9 @@ import byui.cit260.mountKabru.model.Inventory;
  * @author Andrew
  */
 public class BuyPotionView extends View {
-    private final String menu;
-    private boolean promptMessage;
     
     public BuyPotionView(){
-        this.menu = "\n Would you like to buy a Potion for 50 gold? Y/N";    
+        super("\n Would you like to buy a Potion for 50 gold? Y/N");    
     }
 
     @Override
