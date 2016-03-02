@@ -6,18 +6,16 @@
 package byui.cit260.mountKabru.view;
 
 import byui.cit260.mountKabru.control.GameControl;
-import java.util.Scanner;
 
 /**
  *
  * @author Andrew
  */
-public class MainMenuView {
-    private String menu;
-    private boolean promptMessage;
+public class MainMenuView extends View {
+    
     
     public MainMenuView(){
-        this.menu = "\n"
+        super("\n"
               + "\n----------------------------------------"
               + "\n| Main Menu                            |"
               + "\n----------------------------------------"
@@ -26,50 +24,9 @@ public class MainMenuView {
               + "\nH - Get help on how to play the game"
               + "\nS - Save game"
               + "\nQ - Quit"
-              + "\n----------------------------------------";
-    
+              + "\n----------------------------------------");
 }
-    
-    public void displayMainMenuView() {
-        
-        boolean done= false; // set flag to not done
-        do {
-            // prompt for and get players name
-            String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals("Q")) // user wants to quit
-                return; // exit the game
-            
-            // do the requested action and display the next view
-            done = this.doAction(menuOption);
-            
-        } while (!done);
-        
-        }
-
-    private String getMenuOption() {
-        Scanner keyboard = new Scanner(System.in); // keyboard input stream
-        String value = "";
-        
-        boolean valid = false; // set flag to invalid value entered
-        while(!valid) { // while a vaild name has not been retrieved
-            
-            //promt for menu choice
-            System.out.println(this.menu);
-            
-            value = keyboard.nextLine(); // get the choice from the keyboard
-            value = value.trim();
-            
-            //if the name is invalid (less than one character in length)
-            if (value.length() < 1){
-                System.out.println("\nInvalid value - the value can not be blank");
-                continue; // and repeat again
-            }
-            valid = true; //set flag to end repetition
-        }
-        
-        return value; // return the value
-    }
-
+    @Override
     public boolean doAction(String choice) {
         
         choice = choice.toUpperCase(); // convert choice to upper case
