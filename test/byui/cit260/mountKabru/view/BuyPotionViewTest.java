@@ -24,7 +24,7 @@ public class BuyPotionViewTest {
     public void testDisplayMenu() {
         System.out.println("displayMenu");
         BuyPotionView instance = new BuyPotionView();
-        instance.displayMenu();
+        instance.display();
        
     }
     
