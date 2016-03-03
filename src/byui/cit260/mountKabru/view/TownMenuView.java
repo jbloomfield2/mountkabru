@@ -37,7 +37,8 @@ public class TownMenuView extends View {
                 tavern.display();
                 break;
             case "B": // Blacksmith
-                System.out.println("BlacksmithView class");
+                BlacksmithView blacksmith = new BlacksmithView();
+                blacksmith.display();
                 break;
             case "P"://Pit
                 ThePitView pit = new ThePitView();

@@ -84,6 +84,7 @@ public class TavernMenuView extends View{
     }
 
     private void returnToTown() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        TownMenuView town = new TownMenuView();
+        town.display();
     }
 }
