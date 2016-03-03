@@ -52,5 +52,9 @@ class HelpMenuView extends View {
         return false;
     }
 
+    void displayPitHelp() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
 }
