@@ -14,21 +14,22 @@ import java.util.Objects;
  */
 public enum Ability implements Serializable{
     
-    Defend(),
-    Focus(),
-    Slash(),
-    Spiral Cut(),
-    Minor Heal(),
-    Intimidate(),
-    Fireball(),
-    Lighting();
+    Defend(0,0),
+    Focus(0,0),
+    Slash(3,10),
+    SpiralCut(4,15),
+    MinorHeal(2,0),
+    Intimidate(3,0),
+    Fireball(2,15),
+    Lighting(3,25);
     
     private final double resourceCost;
     private final double damage;
 
-    public Ability(Sting description) {
-        this.description = description
-        coordninates = new Point(1,1);
+    Ability(double resCost, double dmg) {
+        this.resourceCost = resCost;
+        this.damage = dmg;
+        
     }
 
     public double getResourceCost() {
@@ -41,7 +42,7 @@ public enum Ability implements Serializable{
 
     @Override
     public String toString() {
-        return "Ability{" + "ablitiyName=" + ablitiyName + ", resourceCost=" + resourceCost + ", damage=" + damage + '}';
+        return "Ability{" + ", resourceCost=" + resourceCost + ", damage=" + damage + '}';
     }
     
     

@@ -13,39 +13,32 @@ import java.util.Objects;
  */
 public enum Actor implements Serializable{
     
-    Goblin(),
-    Wolves(),
-    Kobold(),
-    Giant Ant(),
-    Giant Spider(),
-    Snake(),
-    Black Panther(),
-    Gator(),
-    Centaur(),
-    Ent(),
-    Werewolf(),
-    Mountain Lion(),
-    Mountain Troll(),
-    Giant(),
-    Griffin(),
-    Dragon();
+    Goblin(""),
+    Wolves(""),
+    Kobold(""),
+    GiantAnt(""),
+    GiantSpider(""),
+    Snake(""),
+    BlackPanther(""),
+    Gator(""),
+    Centaur(""),
+    Ent(""),
+    Werewolf(""),
+    MountainLion(""),
+    MountainTroll(""),
+    Giant(""),
+    Griffin(""),
+    Dragon("");
     
-    private final String playerClass;
-    private final int level;
+    //private final String playerClass;
+    //private final int level;
     private final String abilities;
 
-    public Actor(String description) {
-        this.decription = description;
-        coordinates = new Point(1,1);
+    Actor(String ability) {
+       this.abilities = ability;
     }
 
-    public String getPlayerClass() {
-        return playerClass;
-    }
-
-    public int getLevel() {
-        return level;
-    }
+    
 
     public String getAbilities() {
         return abilities;
@@ -53,7 +46,7 @@ public enum Actor implements Serializable{
 
     @Override
     public String toString() {
-        return "Character{" + "name=" + name + ", playerClass=" + playerClass + ", level=" + level + ", abilities=" + abilities + '}';
+        return "Character{"+ ", abilities=" + abilities + '}';
     }
 
     
