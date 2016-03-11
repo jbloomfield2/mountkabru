@@ -7,6 +7,7 @@ package byui.cit260.mountKabru.model;
 
 import java.util.Objects;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,7 +17,8 @@ public class Inventory implements Serializable{
     
     private double shillings;
     private double xp;
-    private String items;
+    private ItemList itemlist;
+    private ArrayList<Item> items = new ArrayList<>();
 
     public Inventory() {
     }
@@ -37,13 +39,23 @@ public class Inventory implements Serializable{
         this.xp = xp;
     }
 
-    public String getItems() {
+    public ItemList getItemlist() {
+        return itemlist;
+    }
+
+    public void setItemlist(ItemList itemlist) {
+        this.itemlist = itemlist;
+    }
+
+    public ArrayList<Item> getItems() {
         return items;
     }
 
-    public void setItems(String items) {
+    public void setItems(ArrayList<Item> items) {
         this.items = items;
     }
+
+    
 
     @Override
     public int hashCode() {

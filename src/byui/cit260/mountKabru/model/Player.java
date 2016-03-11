@@ -19,6 +19,7 @@ public class Player implements Serializable {
    
     //instance variables
     private String name;
+    private String playerClass;
 
     public Player() {
     }
@@ -32,6 +33,16 @@ public class Player implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getPlayerClass() {
+        return playerClass;
+    }
+
+    public void setPlayerClass(String playerClass) {
+        this.playerClass = playerClass;
+    }
+    
+    
 
     @Override
     public int hashCode() {

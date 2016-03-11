@@ -32,7 +32,7 @@ public class GameControl {
        System.out.println("***create new game method called***");
     }
 
-    public Actor calcClass(String answer1, String answer2, String answer3) {
+    public String calcClass(String answer1, String answer2, String answer3) {
         //this method assigns the player's class based on their responses
         int w = 0,m = 0;
         
@@ -65,22 +65,22 @@ public class GameControl {
         }
         //determine class based on answers
         //3 w = warrior, 3 m = mage, some combination = paladin
-        Actor playerActor = new Actor();
+        String result;
         
         if (w > 2){
-            playerActor.setPlayerClass("warrior");
+            result = "Warrior";
             System.out.println(" your class is: Warrior");
-            return playerActor;
+            return result;
         }
         if (m > 2) {
-            playerActor.setPlayerClass("Mage");
+            result = "Mage";
             System.out.println(" your class is: Mage");
-            return playerActor;
+            return result;
         }
         else{
-            playerActor.setPlayerClass("Paladin");
+            result = "Paladin";
             System.out.println(" your class is: Paladin");
-            return playerActor;
+            return result;
         }
         
     

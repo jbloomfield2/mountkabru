@@ -13,6 +13,7 @@ import java.util.Objects;
  */
 public enum Actor implements Serializable{
     
+    PlayerCharacter(""),
     Goblin(""),
     Wolves(""),
     Kobold(""),
@@ -33,9 +34,55 @@ public enum Actor implements Serializable{
     //private final String playerClass;
     //private final int level;
     private final String abilities;
+    
+    private Player player;
+    private Stats stats;
+    private Quest quest;
+    private Inventory inventory;
+    private Locations locations;
 
     Actor(String ability) {
        this.abilities = ability;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public Stats getStats() {
+        return stats;
+    }
+
+    public void setStats(Stats stats) {
+        this.stats = stats;
+    }
+
+    public Quest getQuest() {
+        return quest;
+    }
+
+    public void setQuest(Quest quest) {
+        this.quest = quest;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
+
+    public Locations getLocations() {
+        return locations;
+    }
+
+    public void setLocations(Locations locations) {
+        this.locations = locations;
     }
 
     

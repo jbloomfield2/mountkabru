@@ -10,31 +10,37 @@ import java.util.Objects;
  *
  * @author jacob bloomfield
  */
-public class Quest implements Serializable {
+public enum Quest implements Serializable {
     
-    private String questName;
-    private String questDetails;
+    KillSpiders("kill 5 spiders",0,100,200);
+    
+    
+    private final String QUESTDETAILS;
     private String progress;
-    private String reward;
+    private final double REWARDSHILLINGS;
+    private final double REWARDXP;
 
-    public Quest() {
+     Quest(String questDetails, double progress, double rewardShillings, double rewardXp) {
+         this.QUESTDETAILS = questDetails;
+         this.progress = this.progress;
+         this.REWARDSHILLINGS = rewardShillings;
+         this.REWARDXP = rewardXp;
     }
 
-    public String getQuestName() {
-        return questName;
+    public String getQUESTDETAILS() {
+        return QUESTDETAILS;
     }
 
-    public void setQuestName(String questName) {
-        this.questName = questName;
+    public double getREWARDSHILLINGS() {
+        return REWARDSHILLINGS;
     }
 
-    public String getQuestDetails() {
-        return questDetails;
+    public double getREWARDXP() {
+        return REWARDXP;
     }
 
-    public void setQuestDetails(String questDetails) {
-        this.questDetails = questDetails;
-    }
+    
+    
 
     public String getProgress() {
         return progress;
@@ -44,55 +50,15 @@ public class Quest implements Serializable {
         this.progress = progress;
     }
 
-    public String getReward() {
-        return reward;
-    }
-
-    public void setReward(String reward) {
-        this.reward = reward;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 79 * hash + Objects.hashCode(this.questName);
-        hash = 79 * hash + Objects.hashCode(this.questDetails);
-        hash = 79 * hash + Objects.hashCode(this.progress);
-        hash = 79 * hash + Objects.hashCode(this.reward);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Quest other = (Quest) obj;
-        if (!Objects.equals(this.questName, other.questName)) {
-            return false;
-        }
-        if (!Objects.equals(this.questDetails, other.questDetails)) {
-            return false;
-        }
-        if (!Objects.equals(this.progress, other.progress)) {
-            return false;
-        }
-        if (!Objects.equals(this.reward, other.reward)) {
-            return false;
-        }
-        return true;
-    }
-
     @Override
     public String toString() {
-        return "Quest{" + "questName=" + questName + ", questDetails=" + questDetails + ", progress=" + progress + ", reward=" + reward + '}';
+        return "Quest{" + "QUESTDETAILS=" + QUESTDETAILS + ", progress=" + progress + ", REWARDSHILLINGS=" + REWARDSHILLINGS + ", REWARDXP=" + REWARDXP + '}';
     }
+
+    
+    
+
+    
 
    
     

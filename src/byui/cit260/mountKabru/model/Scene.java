@@ -11,14 +11,19 @@ import java.util.Objects;
  *
  * @author Andrew
  */
-public class Scene implements Serializable{
+public class Scene extends Locations implements Serializable{
     
     private String name;
     private String blocked;
     private String description;
     private String mapSymbol;
+    
+    private BlackSmith blacksmith;
+    private Tavern tavern;
+    private ThePit thepit;
 
     public Scene() {
+        super();
     }
 
     
@@ -54,6 +59,32 @@ public class Scene implements Serializable{
     public void setMapSymbol(String mapSymbol) {
         this.mapSymbol = mapSymbol;
     }
+
+    public BlackSmith getBlacksmith() {
+        return blacksmith;
+    }
+
+    public void setBlacksmith(BlackSmith blacksmith) {
+        this.blacksmith = blacksmith;
+    }
+
+    public Tavern getTavern() {
+        return tavern;
+    }
+
+    public void setTavern(Tavern tavern) {
+        this.tavern = tavern;
+    }
+
+    public ThePit getThepit() {
+        return thepit;
+    }
+
+    public void setThepit(ThePit thepit) {
+        this.thepit = thepit;
+    }
+    
+    
 
     @Override
     public int hashCode() {

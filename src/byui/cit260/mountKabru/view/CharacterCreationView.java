@@ -45,10 +45,12 @@ public class CharacterCreationView extends View {
                         "[ W ]	use your will to resist the temptation to indulge?";
         
         String answer3 = this.getInput();
-        Actor playerActor = new Actor();
+        String classResult;
         GameControl gamec = new GameControl();
         //calculate player class
-        playerActor = gamec.calcClass(answer1,answer2,answer3);
+        classResult = gamec.calcClass(answer1,answer2,answer3);
+        if (classResult.length() > 1)
+            mountkabru.MountKabru.getPlayer().setPlayerClass(classResult);
         //continue to town menu
         TownMenuView town = new TownMenuView();
         town.display();
