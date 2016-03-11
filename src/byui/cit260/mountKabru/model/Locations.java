@@ -19,6 +19,7 @@ public class Locations implements Serializable{
     private String areaName;
     private String monsterType;
     private String areaNumber;
+    private Scene scene;
 
     public Locations() {
     }
@@ -46,6 +47,16 @@ public class Locations implements Serializable{
     public void setAreaNumber(String areaNumber) {
         this.areaNumber = areaNumber;
     }
+
+    public Scene getScene() {
+        return scene;
+    }
+
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
+    
+    
 
     @Override
     public int hashCode() {

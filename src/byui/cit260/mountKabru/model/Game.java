@@ -16,6 +16,7 @@ public class Game implements Serializable {
     
     private Actor actor;
     private ArrayList<Locations> Locations = new ArrayList<>();
+    
 
     public Game() {
     }
