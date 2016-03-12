@@ -12,7 +12,11 @@ import java.util.Objects;
  */
 public enum Quest implements Serializable {
     
-    KillSpiders("kill 5 spiders",0,100,200);
+    KillSpiders("kill 5 spiders",0,100,200),
+    UpgradeArmor("Upgrade your Armor",0,100,200),
+    UpgradeWeapon("Upgrade your Weapon",0,100,200),
+    Win20Battles("Win 20 battles",0,100,200),
+    UseAnAbility("Use an ability 5 times in battle",0,100,200);
     
     
     private final String QUESTDETAILS;
