@@ -13,61 +13,57 @@ import java.util.Objects;
  */
 public enum Actor implements Serializable{
     
-    PlayerCharacter(""),
-    Goblin(""),
-    Wolves(""),
-    Kobold(""),
-    GiantAnt(""),
-    GiantSpider(""),
-    Snake(""),
-    BlackPanther(""),
-    Gator(""),
-    Centaur(""),
-    Ent(""),
-    Werewolf(""),
-    MountainLion(""),
-    MountainTroll(""),
-    Giant(""),
-    Griffin(""),
-    Dragon("");
+    PlayerCharacter("",0,0,0),
+    Goblin("",0,0,0),
+    Wolves("",0,0,0),
+    Kobold("",0,0,0),
+    GiantAnt("",0,0,0),
+    GiantSpider("",0,0,0),
+    Snake("",0,0,0),
+    BlackPanther("",0,0,0),
+    Gator("",0,0,0),
+    Centaur("",0,0,0),
+    Ent("",0,0,0),
+    Werewolf("",0,0,0),
+    MountainLion("",0,0,0),
+    MountainTroll("",0,0,0),
+    Giant("",0,0,0),
+    Griffin("",0,0,0),
+    Dragon("",0,0,0);
     
     //private final String playerClass;
     //private final int level;
-    private final String abilities;
+    private final String MONSTERABILITIES;
+    private final Stats MONSTERSTATS;
     
-    private Player player;
-    private Stats stats;
-    private Quest quest;
+    private Stats playerStats;
+    private QuestLog quest;
     private Inventory inventory;
     private Locations locations;
 
-    Actor(String ability) {
-       this.abilities = ability;
+    Actor(String ability,double atk, double def,double hp) {
+       this.MONSTERABILITIES = ability;
+       this.MONSTERSTATS = new Stats(atk,def,hp);
     }
 
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    public Stats getStats() {
-        return stats;
-    }
-
-    public void setStats(Stats stats) {
-        this.stats = stats;
-    }
-
-    public Quest getQuest() {
+    public QuestLog getQuest() {
         return quest;
     }
 
-    public void setQuest(Quest quest) {
+    public void setQuest(QuestLog quest) {
         this.quest = quest;
     }
+
+
+    public Stats getPlayerStats() {
+        return playerStats;
+    }
+
+    public void setPlayerStats(Stats stats) {
+        this.playerStats = stats;
+    }
+
+    
 
     public Inventory getInventory() {
         return inventory;
@@ -87,13 +83,13 @@ public enum Actor implements Serializable{
 
     
 
-    public String getAbilities() {
-        return abilities;
+    public String getMonsterAbilities() {
+        return MONSTERABILITIES;
     }
 
     @Override
     public String toString() {
-        return "Character{"+ ", abilities=" + abilities + '}';
+        return "Character{"+ ", abilities=" + MONSTERABILITIES + '}';
     }
 
     

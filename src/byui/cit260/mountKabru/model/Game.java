@@ -15,7 +15,8 @@ import java.util.ArrayList;
 public class Game implements Serializable {
     
     private Actor actor;
-    private ArrayList<Locations> Locations = new ArrayList<>();
+    private ArrayList<Locations> locations = new ArrayList<>();
+    private Player player;
 
     public Game() {
     }
@@ -24,16 +25,25 @@ public class Game implements Serializable {
         return actor;
     }
 
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+    
+
     public void setActor(Actor actor) {
         this.actor = actor;
     }
 
     public ArrayList<Locations> getLocations() {
-        return Locations;
+        return locations;
     }
 
     public void setLocations(ArrayList<Locations> Locations) {
-        this.Locations = Locations;
+        this.locations = Locations;
     }
 
     

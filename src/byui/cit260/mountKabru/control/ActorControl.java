@@ -4,12 +4,17 @@
  * and open the template in the editor.
  */
 package byui.cit260.mountKabru.control;
+import byui.cit260.mountKabru.model.Stats;
 import java.util.Random;
 /**
  *
  * @author jacob bloomfield
  */
 public class ActorControl {
+
+    static Stats createPlayerStats() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     public int talkToActor(int level){
           Random rng = new Random();

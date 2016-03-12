@@ -6,7 +6,13 @@
 package byui.cit260.mountKabru.control;
 
 import byui.cit260.mountKabru.model.Actor;
+import byui.cit260.mountKabru.model.Game;
+import byui.cit260.mountKabru.model.Inventory;
+import byui.cit260.mountKabru.model.Locations;
 import byui.cit260.mountKabru.model.Player;
+import byui.cit260.mountKabru.model.QuestLog;
+import byui.cit260.mountKabru.model.Stats;
+import java.util.ArrayList;
 import mountkabru.MountKabru;
 
 /**
@@ -29,7 +35,30 @@ public class GameControl {
     }
 
     public static void createNewGame(Player player) {
-       System.out.println("***create new game method called***");
+       Game game = new Game();//create a new game
+       MountKabru.setCurrentGame(game);
+       
+       game.setPlayer(player);
+       
+       Inventory inv = new Inventory();
+       game.getActor().setInventory(inv);
+       
+       ArrayList<Locations> locations = new ArrayList<>();
+       locations = MapControl.createLocations();
+       game.setLocations(locations);
+       
+       QuestLog quests = new QuestLog();
+       game.getActor().setQuest(quests);
+       
+       Stats playerStats = new Stats();
+       playerStats = ActorControl.createPlayerStats();
+       game.getActor().setPlayerStats(playerStats);
+       
+       MapControl.CreateMap();
+       
+       
+       
+       
     }
 
     public String calcClass(String answer1, String answer2, String answer3) {

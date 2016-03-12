@@ -18,6 +18,14 @@ public class Stats implements Serializable {
     public Stats() {
     }
 
+    public Stats(double attack, double defence, double health) {
+        this.attack = attack;
+        this.defence = defence;
+        this.health = health;
+    }
+    
+    
+
     public double getAttack() {
         return attack;
     }
