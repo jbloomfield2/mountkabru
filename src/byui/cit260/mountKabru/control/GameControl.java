@@ -8,6 +8,7 @@ package byui.cit260.mountKabru.control;
 import byui.cit260.mountKabru.model.Actor;
 import byui.cit260.mountKabru.model.Game;
 import byui.cit260.mountKabru.model.Inventory;
+import byui.cit260.mountKabru.model.Item;
 import byui.cit260.mountKabru.model.Locations;
 import byui.cit260.mountKabru.model.Player;
 import byui.cit260.mountKabru.model.QuestLog;
@@ -41,6 +42,8 @@ public class GameControl {
        game.setPlayer(player);
        
        Inventory inv = new Inventory();
+       
+       inv = createInventory();
        game.getActor().setInventory(inv);
        
        ArrayList<Locations> locations = new ArrayList<>();
@@ -59,6 +62,42 @@ public class GameControl {
        
        
        
+    }
+    
+    public static Inventory createInventory(){
+        Inventory inv = new Inventory();
+        
+        Item healthPotion= new Item();
+        healthPotion.setItemType("Health potion");
+        healthPotion.setQuantity(0);
+        healthPotion.setValue(25);
+        
+        Item gHealthPotion= new Item();
+        gHealthPotion.setItemType("Greater Health potion");
+        gHealthPotion.setQuantity(0);
+        gHealthPotion.setValue(50);
+        
+        Item manaPotion= new Item();
+        manaPotion.setItemType("Mana potion");
+        manaPotion.setQuantity(0);
+        manaPotion.setValue(25);
+        
+        Item gManaPotion= new Item();
+        gManaPotion.setItemType("Greater Mana potion");
+        gManaPotion.setQuantity(0);
+        gManaPotion.setValue(50);
+        
+        inv.getItems().add(healthPotion);
+        inv.getItems().add(gHealthPotion);
+        inv.getItems().add(manaPotion);
+        inv.getItems().add(gManaPotion);
+        
+            
+        return inv;
+        }
+
+    public static Inventory getSortedInventoryList() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public String calcClass(String answer1, String answer2, String answer3) {
@@ -111,6 +150,7 @@ public class GameControl {
             System.out.println(" your class is: Paladin");
             return result;
         }
+        
         
     
         

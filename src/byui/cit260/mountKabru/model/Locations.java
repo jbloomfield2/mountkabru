@@ -6,6 +6,7 @@
 package byui.cit260.mountKabru.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 /**
  *
  * @author Andrew
@@ -19,6 +20,8 @@ public class Locations implements Serializable{
     private String areaName;
     private String monsterType;
     private String areaNumber;
+    private Scene[] scenes = new Scene[8];
+    private ArrayList<Actor> actors;
 
     public Locations() {
     }
@@ -46,6 +49,26 @@ public class Locations implements Serializable{
     public void setAreaNumber(String areaNumber) {
         this.areaNumber = areaNumber;
     }
+
+    public Scene[] getScenes() {
+        return scenes;
+    }
+
+    public void setScenes(Scene[] scenes) {
+        this.scenes = scenes;
+    }
+
+    public ArrayList<Actor> getActors() {
+        return actors;
+    }
+
+    public void setActors(ArrayList<Actor> actors) {
+        this.actors = actors;
+    }
+
+   
+    
+    
 
     @Override
     public int hashCode() {

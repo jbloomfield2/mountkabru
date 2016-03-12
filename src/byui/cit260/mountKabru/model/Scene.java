@@ -14,13 +14,8 @@ import java.util.Objects;
 public class Scene extends Locations implements Serializable{
     
     private String name;
-    private String blocked;
     private String description;
-    private String mapSymbol;
     
-    private BlackSmith blacksmith;
-    private Tavern tavern;
-    private ThePit thepit;
 
     public Scene() {
         super();
@@ -36,14 +31,6 @@ public class Scene extends Locations implements Serializable{
         this.name = name;
     }
 
-    public String getBlocked() {
-        return blocked;
-    }
-
-    public void setBlocked(String blocked) {
-        this.blocked = blocked;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -52,47 +39,14 @@ public class Scene extends Locations implements Serializable{
         this.description = description;
     }
 
-    public String getMapSymbol() {
-        return mapSymbol;
-    }
-
-    public void setMapSymbol(String mapSymbol) {
-        this.mapSymbol = mapSymbol;
-    }
-
-    public BlackSmith getBlacksmith() {
-        return blacksmith;
-    }
-
-    public void setBlacksmith(BlackSmith blacksmith) {
-        this.blacksmith = blacksmith;
-    }
-
-    public Tavern getTavern() {
-        return tavern;
-    }
-
-    public void setTavern(Tavern tavern) {
-        this.tavern = tavern;
-    }
-
-    public ThePit getThepit() {
-        return thepit;
-    }
-
-    public void setThepit(ThePit thepit) {
-        this.thepit = thepit;
-    }
-    
+     
     
 
     @Override
     public int hashCode() {
         int hash = 3;
         hash = 29 * hash + Objects.hashCode(this.name);
-        hash = 29 * hash + Objects.hashCode(this.blocked);
         hash = 29 * hash + Objects.hashCode(this.description);
-        hash = 29 * hash + Objects.hashCode(this.mapSymbol);
         return hash;
     }
 
@@ -111,21 +65,16 @@ public class Scene extends Locations implements Serializable{
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
-        if (!Objects.equals(this.blocked, other.blocked)) {
-            return false;
-        }
         if (!Objects.equals(this.description, other.description)) {
             return false;
         }
-        if (!Objects.equals(this.mapSymbol, other.mapSymbol)) {
-            return false;
-        }
+
         return true;
     }
 
     @Override
     public String toString() {
-        return "Scene{" + "name=" + name + ", blocked=" + blocked + ", description=" + description + ", mapSymbol=" + mapSymbol + '}';
+        return "Scene{" + "name=" + name +  ", description=" + description + ", mapSymbol=" +  '}';
     }
     
     

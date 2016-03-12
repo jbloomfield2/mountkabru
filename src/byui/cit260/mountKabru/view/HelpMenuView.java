@@ -5,6 +5,10 @@
  */
 package byui.cit260.mountKabru.view;
 
+import byui.cit260.mountKabru.control.GameControl;
+import byui.cit260.mountKabru.model.Inventory;
+import byui.cit260.mountKabru.model.Item;
+
 /**
  *
  * @author jacob bloomfield
@@ -40,7 +44,7 @@ class HelpMenuView extends View {
                 System.out.println("Adventuring info");
                 break;
             case "I"://inventory
-                System.out.println("Inventory info");
+                this.displayInventoryList();
                 break;
             case "Q"://back to main menu
                 return true;
@@ -54,6 +58,18 @@ class HelpMenuView extends View {
 
     void displayPitHelp() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void displayInventoryList() {
+        Inventory inv = GameControl.getSortedInventoryList();
+        
+       System.out.println("list of items in the game");
+        System.out.println("type" + "\t" + "quantity owned" + "\t" + "value");
+       
+       for (Item item : inv.getItems())
+           System.out.println(item.getItemType()+ "\t" +
+                              item.getQuantity()+ "\t" +
+                              item.getValue());
     }
 
     
