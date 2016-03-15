@@ -13,15 +13,17 @@ import java.io.Serializable;
  */
 public enum ItemList implements Serializable {
     
-    HealthPotion("Restores 10 hp"),
-    GreaterHealthPotion("Restores 25 HP"),
-    ManaPotion("Restores 10 mp"),
-    GreaterManaPotion("Restores 25 hp");
+    HealthPotion("Restores 10 hp",10),
+    GreaterHealthPotion("Restores 25 HP",25),
+    ManaPotion("Restores 10 mp",10),
+    GreaterManaPotion("Restores 25 hp",25);
     
     private final String DESCRIPTION;
+    private final double VALUE;
     
-    ItemList(String desc){
+    ItemList(String desc, double value){
         this.DESCRIPTION = desc;
+        this.VALUE = value;
     }
 
     public String getDESCRIPTION() {
