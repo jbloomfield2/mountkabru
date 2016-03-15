@@ -5,10 +5,12 @@
  */
 package byui.cit260.mountKabru.control;
 
+
 /**
  *
  * @author jacob bloomfield
  */
 public class InventoryControl {
+    
     
 }
