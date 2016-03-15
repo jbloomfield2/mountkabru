@@ -5,6 +5,7 @@
  */
 package byui.cit260.mountKabru.control;
 
+import byui.cit260.mountKabru.exceptions.InventoryControlException;
 import byui.cit260.mountKabru.model.Game;
 import byui.cit260.mountKabru.model.Inventory;
 import byui.cit260.mountKabru.model.Item;
@@ -78,4 +79,18 @@ public class InventoryControl {
         
         return sortMe;
     }
+    
+    public static void addPotionToInv() throws InventoryControlException { 
+        
+                Inventory inv = new Inventory();
+                        
+                    if (inv.getShillings() < 50){
+                        throw new InventoryControlException("\nYou only have "
+                                                            + inv.getShillings() + ". Come back when you have enough.");
+                    }
+                               
+                    if (inv.getShillings() > 50){
+                        System.out.println("\nThanks for your business. Good luck!");
+                    }
+        }
 }

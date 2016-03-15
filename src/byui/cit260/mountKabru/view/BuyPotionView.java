@@ -5,7 +5,11 @@
  */
 package byui.cit260.mountKabru.view;
 
+import byui.cit260.mountKabru.control.InventoryControl;
+import byui.cit260.mountKabru.exceptions.InventoryControlException;
 import byui.cit260.mountKabru.model.Inventory;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Andrew
@@ -21,27 +25,22 @@ public class BuyPotionView extends View {
         choice = choice.toUpperCase(); // convert choice to upper case
         
         switch (choice){
-            case "Y": // create and start a new game
-                this.addPotionToInv();
+            case "Y": {
+            try {
+                // create and start a new game
+                InventoryControl.addPotionToInv();
+            } catch (InventoryControlException ex) {
+                System.out.println(ex.getMessage());Drew
+                        
+            }
+        }
                 break;
-            case "N": // display the help menu
+            case "N": // splay the help menu
                 return true;
             }
         return false;
     }
-    
-    private void addPotionToInv() { 
-        
-                Inventory inv = new Inventory();
-                        
-                    if (inv.getShillings() < 50){
-                        System.out.println("\nCome back when you have enough money.");
-                    }
-                               
-                    if (inv.getShillings() > 50){
-                        System.out.println("\nThanks for your business. Good luck!");
-                    }
-        }
+   
 
     private void returnToTavernMenu() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
