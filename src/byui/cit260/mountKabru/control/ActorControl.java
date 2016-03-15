@@ -13,7 +13,8 @@ import java.util.Random;
 public class ActorControl {
 
     static Stats createPlayerStats() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("create stats called");
+        return null;
     }
     
     public int talkToActor(int level){
