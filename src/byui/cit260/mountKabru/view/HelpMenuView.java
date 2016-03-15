@@ -6,6 +6,7 @@
 package byui.cit260.mountKabru.view;
 
 import byui.cit260.mountKabru.control.GameControl;
+import byui.cit260.mountKabru.control.InventoryControl;
 import byui.cit260.mountKabru.model.Inventory;
 import byui.cit260.mountKabru.model.Item;
 
@@ -61,15 +62,18 @@ class HelpMenuView extends View {
     }
 
     private void displayInventoryList() {
-        Inventory inv = GameControl.getSortedInventoryList();
-        
-        System.out.println("list of items in the game");
+        Inventory inv = InventoryControl.getSortedInventoryList();
+        String itemName,itemDesc;
+        System.out.println("every player will start with these items");
         System.out.println("type" + "\t\t" + "quantity owned" + "\t\t" + "value");
        
-       for (Item item : inv.getItems())
+       for (Item item : inv.getItems()){
+           itemName = item.getItemType();
            System.out.println(item.getItemType()+ "\t" +
-                              item.getQuantity()+ "\t" +
+                              item.getQuantity()+ "\t\t" +
                               item.getValue());
+                              
+                                      }
     }
 
     

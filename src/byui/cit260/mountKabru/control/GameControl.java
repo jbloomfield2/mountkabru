@@ -24,13 +24,13 @@ public class GameControl {
 
     public static Player createPlayer(String playersName) {
         
-        if (playersName == null)
+        if (playersName == null)//check if user entered anything
             return null;
         
         Player player = new Player();
         player.setName(playersName);
         
-        MountKabru.setPlayer(player);
+        MountKabru.setPlayer(player);//save player in main for later
         
         return player;
     }
@@ -39,13 +39,13 @@ public class GameControl {
        Game game = new Game();//create a new game
        MountKabru.setCurrentGame(game);
        
-       game.setPlayer(player);
-       Actor actor = new Actor();
+       game.setPlayer(player);//set player
+       Actor actor = new Actor();//create and initalize all other model objects
        game.setActor(actor);
        
        Inventory inv = new Inventory();
        
-       inv = createInventory();
+       inv = InventoryControl.createInventory();
        game.getActor().setInventory(inv);
        
        ArrayList<Locations> locations = new ArrayList<>();
@@ -66,52 +66,7 @@ public class GameControl {
        
     }
     
-    public static Inventory createInventory(){
-        Inventory inv = new Inventory();
-        
-        Item healthPotion= new Item();
-        healthPotion.setItemType("Health potion");
-        healthPotion.setQuantity(0);
-        healthPotion.setValue(25);
-        
-        Item gHealthPotion= new Item();
-        gHealthPotion.setItemType("Greater Health potion");
-        gHealthPotion.setQuantity(0);
-        gHealthPotion.setValue(50);
-        
-        Item manaPotion= new Item();
-        manaPotion.setItemType("Mana potion");
-        manaPotion.setQuantity(0);
-        manaPotion.setValue(25);
-        
-        Item gManaPotion= new Item();
-        gManaPotion.setItemType("Greater Mana potion");
-        gManaPotion.setQuantity(0);
-        gManaPotion.setValue(50);
-        
-        inv.getItems().add(healthPotion);
-        inv.getItems().add(gHealthPotion);
-        inv.getItems().add(manaPotion);
-        inv.getItems().add(gManaPotion);
-        
-            
-        return inv;
-        }
-
-    public static Inventory getSortedInventoryList() {
-        Game currentGame = MountKabru.getCurrentGame();
-        if (currentGame == null){//check if game is started yet
-            Inventory sorted = new Inventory();
-            sorted = createInventory();  
-            return sorted;//if game is not started initialize an inventory to return
-        }
-        return null;
-    }
     
-    public static Inventory doInventorySort(Inventory sortMe){
-        //implement me later
-        return sortMe;
-    }
 
     public String calcClass(String answer1, String answer2, String answer3) {
         //this method assigns the player's class based on their responses
