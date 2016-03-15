@@ -17,7 +17,8 @@ import java.util.ArrayList;
 public class MapControl {
 
     static ArrayList<Locations> createLocations() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("createlocations called");
+        return null;
     }
 
     static void CreateMap() {

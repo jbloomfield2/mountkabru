@@ -40,6 +40,8 @@ public class GameControl {
        MountKabru.setCurrentGame(game);
        
        game.setPlayer(player);
+       Actor actor = new Actor();
+       game.setActor(actor);
        
        Inventory inv = new Inventory();
        
@@ -97,7 +99,18 @@ public class GameControl {
         }
 
     public static Inventory getSortedInventoryList() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Game currentGame = MountKabru.getCurrentGame();
+        if (currentGame == null){//check if game is started yet
+            Inventory sorted = new Inventory();
+            sorted = createInventory();  
+            return sorted;//if game is not started initialize an inventory to return
+        }
+        return null;
+    }
+    
+    public static Inventory doInventorySort(Inventory sortMe){
+        //implement me later
+        return sortMe;
     }
 
     public String calcClass(String answer1, String answer2, String answer3) {
