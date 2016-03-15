@@ -30,7 +30,7 @@ public class BuyPotionView extends View {
                 // create and start a new game
                 InventoryControl.addPotionToInv();
             } catch (InventoryControlException ex) {
-                System.out.println(ex.getMessage());Drew
+                System.out.println(ex.getMessage());
                         
             }
         }
