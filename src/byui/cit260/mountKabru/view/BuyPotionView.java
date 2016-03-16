@@ -7,9 +7,6 @@ package byui.cit260.mountKabru.view;
 
 import byui.cit260.mountKabru.control.InventoryControl;
 import byui.cit260.mountKabru.exceptions.InventoryControlException;
-import byui.cit260.mountKabru.model.Inventory;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 /**
  *
  * @author Andrew
