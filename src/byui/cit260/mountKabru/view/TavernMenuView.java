@@ -76,7 +76,8 @@ public class TavernMenuView extends View{
     }
 
     private void buyManaPotion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        BuyManaPotion buy2 = new BuyManaPotion();
+        buy2.display();
     }
 
     private void availableQuests() {
