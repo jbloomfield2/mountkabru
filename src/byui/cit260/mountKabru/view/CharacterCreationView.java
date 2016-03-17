@@ -45,6 +45,25 @@ public class CharacterCreationView extends View {
                         "[ W ]	use your will to resist the temptation to indulge?";
         
         String answer3 = this.getInput();
+        
+        
+        
+        this.displayMessage = "How old are you?";
+        
+        String ageString;
+        
+        ageString = this.getInput();
+        try{
+            int age = Integer.parseInt(ageString);
+            System.out.println("This is your age " + age);
+        } catch (NumberFormatException nf){
+            
+            System.out.println("\nYou must enter a valid number"
+                              + " Try again");
+            return false;
+        }     
+                
+                
         String classResult;
         GameControl gamec = new GameControl();
         //calculate player class
