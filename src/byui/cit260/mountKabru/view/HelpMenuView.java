@@ -64,13 +64,13 @@ class HelpMenuView extends View {
     private void displayInventoryList() {
         Inventory inv = InventoryControl.getSortedInventoryList();
         String itemName,itemDesc;
-        System.out.println("every player will start with these items");
-        System.out.println("type" + "\t\t" + "quantity owned" + "\t\t" + "value");
+        System.out.println("items available");
+        System.out.println("type" + "\t\t\t" + "description" + "\t\t" + "value");
        
        for (Item item : inv.getItems()){
            itemName = item.getItemType();
            System.out.println(item.getItemType()+ "\t" +
-                              item.getQuantity()+ "\t\t" +
+                              item.getDescription()+ "\t\t" +
                               item.getValue());
                               
                                       }

@@ -14,7 +14,7 @@ public class TownMenuView extends View {
     public TownMenuView() {
         super("\n"
               + "\n----------------------------------------"
-              + " Welcome to the Town"
+              + " \nWelcome to the Town"
               + "\n----------------------------------------"
               + "\nA - go adventuring"
               + "\nT - Visit the Tavern"
@@ -45,7 +45,8 @@ public class TownMenuView extends View {
                 pit.display();
                 break;
             case "M"://show game menu
-                System.out.println("GameMenuView class");
+                GameMenuView gameMenu = new GameMenuView();
+                gameMenu.display();
             break;
                 
                 

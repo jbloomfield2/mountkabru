@@ -15,10 +15,16 @@ import java.util.Objects;
 public class Item implements Serializable {
     
     private String itemType;
+    private String description;
     private int quantity;
-    private int value;
+    private double value;
 
-    public Item() {
+    public Item(ItemList item) {
+        itemType = item.getITEMTYPE();
+        value = item.getVALUE();
+        description = item.getDESCRIPTION();
+        quantity = 0;
+                
     }
 
     public String getItemType() {
@@ -37,7 +43,7 @@ public class Item implements Serializable {
         this.quantity = quantity;
     }
 
-    public int getValue() {
+    public double getValue() {
         return value;
     }
 
@@ -45,14 +51,15 @@ public class Item implements Serializable {
         this.value = value;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 79 * hash + Objects.hashCode(this.itemType);
-        hash = 79 * hash + this.quantity;
-        hash = 79 * hash + this.value;
-        return hash;
+    public String getDescription() {
+        return description;
     }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    
 
     @Override
     public boolean equals(Object obj) {

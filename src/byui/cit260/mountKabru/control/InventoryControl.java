@@ -8,6 +8,7 @@ package byui.cit260.mountKabru.control;
 import byui.cit260.mountKabru.model.Game;
 import byui.cit260.mountKabru.model.Inventory;
 import byui.cit260.mountKabru.model.Item;
+import byui.cit260.mountKabru.model.ItemList;
 import mountkabru.MountKabru;
 
 /**
@@ -16,33 +17,15 @@ import mountkabru.MountKabru;
  */
 public class InventoryControl {
     public static Inventory createInventory(){//initialize inventory with starting items
+        
         Inventory inv = new Inventory();
+        for (ItemList items: ItemList.values()){
+            Item temp = new Item(items);
+            inv.getItems().add(temp);
+        }
+
         
-        Item healthPotion= new Item();
-        healthPotion.setItemType("Health potion\t");
-        healthPotion.setQuantity(2);
-        healthPotion.setValue(25);
         
-        Item gHealthPotion= new Item();
-        gHealthPotion.setItemType("Greater Health potion");
-        gHealthPotion.setQuantity(0);
-        gHealthPotion.setValue(50);
-        
-        Item manaPotion= new Item();
-        manaPotion.setItemType("Mana potion\t");
-        manaPotion.setQuantity(1);
-        manaPotion.setValue(25);
-        
-        Item gManaPotion= new Item();
-        gManaPotion.setItemType("Greater Mana potion");
-        gManaPotion.setQuantity(0);
-        gManaPotion.setValue(50);
-        
-        inv.getItems().add(healthPotion);
-        inv.getItems().add(gHealthPotion);
-        inv.getItems().add(manaPotion);
-        inv.getItems().add(gManaPotion);
-        inv.setShillings(10);
         
             
         return inv;
@@ -50,13 +33,14 @@ public class InventoryControl {
 
     public static Inventory getSortedInventoryList() {
         Game currentGame = MountKabru.getCurrentGame();
+        Inventory sorted = new Inventory();
         if (currentGame == null){//check if game is started yet
-            Inventory sorted = new Inventory();
             sorted = createInventory();
-            doInventorySort(sorted);
+            sorted = doInventorySort(sorted);
             return sorted;//if game is not started initialize a new inventory for the help screen
         }
-        return null;
+        sorted = doInventorySort(currentGame.getActor().getInventory());
+        return sorted;
     }
     
     public static Inventory doInventorySort(Inventory sortMe){//bubblesort implementation
