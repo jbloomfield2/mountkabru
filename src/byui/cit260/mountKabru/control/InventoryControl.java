@@ -24,6 +24,9 @@ public class InventoryControl {
             Item temp = new Item(items);
             inv.getItems().add(temp);
         }
+        inv.getItems().get(0).setValue(3);
+        inv.getItems().get(2).setValue(1);
+        inv.getItems().get(1).setValue(4);
 
         
         
