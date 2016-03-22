@@ -41,6 +41,9 @@ public class Player implements Serializable {
     public void setPlayerClass(String playerClass) {
         this.playerClass = playerClass;
     }
+
+    
+    
     
     
 

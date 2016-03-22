@@ -13,8 +13,15 @@ import java.util.Random;
 public class ActorControl {
 
     static Stats createPlayerStats() {
-        System.out.println("create stats called");
-        return null;
+        Stats playerStats = new Stats();
+        playerStats.setAttack(3);
+        playerStats.setDefence(1);
+        playerStats.setMana(15);
+        playerStats.setHealth(20);
+        playerStats.setMaxHealth(20);
+        playerStats.setLevel(1);
+        playerStats.setMaxMana(20);
+        return playerStats;
     }
     
     public int talkToActor(int level){

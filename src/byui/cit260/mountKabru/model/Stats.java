@@ -14,6 +14,9 @@ public class Stats implements Serializable {
     private double defence;
     private double mana;
     private double health;
+    private double maxHealth;
+    private double maxMana;
+    private int level;
 
     public Stats() {
     }
@@ -32,6 +35,23 @@ public class Stats implements Serializable {
 
     public void setAttack(double attack) {
         this.attack = attack;
+    }
+
+    public double getMaxHealth() {
+        return maxHealth;
+    }
+
+    public void setMaxHealth(double maxhealth) {
+        this.maxHealth = maxhealth;
+        
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
     }
 
     public double getDefence() {
@@ -57,6 +77,15 @@ public class Stats implements Serializable {
     public void setHealth(double health) {
         this.health = health;
     }
+
+    public double getMaxMana() {
+        return maxMana;
+    }
+
+    public void setMaxMana(double maxMana) {
+        this.maxMana = maxMana;
+    }
+    
 
     @Override
     public int hashCode() {
