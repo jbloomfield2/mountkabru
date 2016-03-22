@@ -6,6 +6,7 @@
 package byui.cit260.mountKabru.view;
 
 import byui.cit260.mountKabru.control.GameControl;
+import byui.cit260.mountKabru.exceptions.GameControlException;
 import byui.cit260.mountKabru.model.Actor;
 import java.util.Scanner;
 
@@ -31,6 +32,12 @@ public class CharacterCreationView extends View {
     
     @Override
     public boolean doAction(String answer1) {
+        answer1 = answer1.toUpperCase();
+        if (!answer1.equals("W") && !answer1.equals("M")){
+            System.out.print("invalid response");
+            return false;
+        }
+            
         //change prompt to question 2
         this.displayMessage =  "2.	If you are hanging on the edge of a cliff, would you:\n" +
                             "[ M ] 	fall, knowing you're strong enough to not perish?\n" +
@@ -38,6 +45,11 @@ public class CharacterCreationView extends View {
         
             
         String answer2 = this.getInput();
+        answer2 = answer2.toUpperCase();
+        if (!answer1.equals("W") && !answer1.equals("M")){
+            System.out.print("invalid response");
+            return false;
+        }
         
         //change prompt for question 3
         this.displayMessage = "3.       If you are being enticed by delicious pastries, would you:\n" +
@@ -45,6 +57,11 @@ public class CharacterCreationView extends View {
                         "[ W ]	use your will to resist the temptation to indulge?";
         
         String answer3 = this.getInput();
+        answer3 = answer3.toUpperCase();
+        if (!answer1.equals("W") && !answer1.equals("M")){
+            System.out.print("invalid response");
+            return false;
+        }
         
         
         
@@ -67,7 +84,14 @@ public class CharacterCreationView extends View {
         String classResult;
         GameControl gamec = new GameControl();
         //calculate player class
+        try{
         classResult = gamec.calcClass(answer1,answer2,answer3);
+        }
+        catch (GameControlException e){
+            System.out.println(e.getMessage());
+            return false;
+            
+        }
         if (classResult.length() > 1)
             mountkabru.MountKabru.getPlayer().setPlayerClass(classResult);
         //continue to town menu

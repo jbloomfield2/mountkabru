@@ -5,6 +5,7 @@
  */
 package byui.cit260.mountKabru.control;
 
+import byui.cit260.mountKabru.exceptions.GameControlException;
 import byui.cit260.mountKabru.model.Actor;
 import byui.cit260.mountKabru.model.Game;
 import byui.cit260.mountKabru.model.Inventory;
@@ -68,7 +69,7 @@ public class GameControl {
     
     
 
-    public String calcClass(String answer1, String answer2, String answer3) {
+    public String calcClass(String answer1, String answer2, String answer3) throws GameControlException {
         //this method assigns the player's class based on their responses
         int w = 0,m = 0;
         
@@ -78,8 +79,7 @@ public class GameControl {
         else if (answer1.equalsIgnoreCase("w"))
             w++;
         else    {
-            System.out.println("Error unexpected input");
-            return null;
+            throw new GameControlException("Unexpected input, m or w expected");
         }
         
         if (answer2.equalsIgnoreCase("m"))
@@ -87,8 +87,7 @@ public class GameControl {
         else if (answer2.equalsIgnoreCase("w"))
             w++;
         else    {
-            System.out.println("Error unexpected input");
-            return null;
+            throw new GameControlException("unexpected input, m or w expected");
         }
             
         if (answer3.equalsIgnoreCase("m"))
@@ -96,8 +95,7 @@ public class GameControl {
         else if (answer3.equalsIgnoreCase("w"))
             w++;
         else    {
-            System.out.println("Error unexpected input");
-            return null;
+           throw new  GameControlException("unexpexted input m or w expected");
         }
         //determine class based on answers
         //3 w = warrior, 3 m = mage, some combination = paladin
