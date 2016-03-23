@@ -45,6 +45,8 @@ public class TavernMenuView extends View{
                 break;
             case "S": // display the help menu
                 this.sleep();
+                int currentDay = game.getDay();
+                this.console.print("after a good night's sleep your health mana have been restored. it is now day " + currentDay + " of your adventure.");
                 break;
             case "H": // display the help menu
                 this.buyHealthPotion();
@@ -68,13 +70,15 @@ public class TavernMenuView extends View{
 
     private void talkToTavernOwner() {
         ActorControl ac = new ActorControl();
-        ac.talkToActor(game.getActor().getPlayerStats().getLevel());
+        int responseNum = ac.talkToActor(game.getActor().getPlayerStats().getLevel());
+        String tavernResponse = ac.actorResponse(responseNum);
+        this.console.println(tavernResponse);
     }
 
-    private void sleep() {
+    private void sleep() {//sets health and mana to maximum
         game.getActor().getPlayerStats().setHealth(game.getActor().getPlayerStats().getMaxHealth());
         game.getActor().getPlayerStats().setMana(game.getActor().getPlayerStats().getMaxMana());
-        
+        game.setDay(game.getDay()+1);
     }
 
     private void buyHealthPotion() {

@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package byui.cit260.mountKabru.control;
+import byui.cit260.mountKabru.exceptions.ActorControlException;
 import byui.cit260.mountKabru.model.Stats;
+import byui.cit260.mountKabru.model.TavernKeepResponses;
 import java.util.Random;
 /**
  *
@@ -65,5 +67,15 @@ public class ActorControl {
           
           return response;
           
+    }
+    
+    public String actorResponse(int response){
+        String temp;
+        for (TavernKeepResponses t: TavernKeepResponses.values() )
+            if (t.ordinal() == response)
+                return t.getRESPONSE();
+        
+        return null;
+        
     }
 }

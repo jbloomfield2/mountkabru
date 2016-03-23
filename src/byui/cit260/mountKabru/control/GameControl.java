@@ -31,6 +31,7 @@ public class GameControl {
         Player player = new Player();
         player.setName(playersName);
         
+        
         MountKabru.setPlayer(player);//save player in main for later
         
         return player;
@@ -43,6 +44,7 @@ public class GameControl {
        game.setPlayer(player);//set player
        Actor actor = new Actor();//create and initalize all other model objects
        game.setActor(actor);
+       game.setDay(1);
        
        Inventory inv = new Inventory();
        
