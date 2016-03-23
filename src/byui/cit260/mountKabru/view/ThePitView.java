@@ -28,7 +28,7 @@ public class ThePitView extends View {
 
         switch (value){
             case "T":
-                System.out.println("Train function called");
+                this.console.println("Train function called");
                 break;
             case "H":
                 HelpMenuView pitHelp = new HelpMenuView();
@@ -38,7 +38,7 @@ public class ThePitView extends View {
                 return true;
 
             default:
-                System.out.println("invalid choice selected! please try again");
+                this.console.println("invalid choice selected! please try again");
                 break;      
         }
         

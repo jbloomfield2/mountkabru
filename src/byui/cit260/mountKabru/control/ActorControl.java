@@ -6,6 +6,7 @@
 package byui.cit260.mountKabru.control;
 import byui.cit260.mountKabru.model.Stats;
 import java.util.Random;
+import mountkabru.MountKabru;
 /**
  *
  * @author jacob bloomfield
@@ -13,7 +14,7 @@ import java.util.Random;
 public class ActorControl {
 
     static Stats createPlayerStats() {
-        System.out.println("create stats called");
+        MountKabru.getOutFile().println("create stats called");
         return null;
     }
     

@@ -51,7 +51,7 @@ public class GameMenuView extends View{
         
         for (Item item : temp.getItems()){
            itemName = item.getItemType();
-           System.out.println(item.getItemType()+ "\t" +
+          this.console.println(item.getItemType()+ "\t" +
                               item.getDescription()+ "\t\t" +
                               "quantity: " + item.getQuantity() +
                               "\tvalue: " + item.getValue()+ " shillings");

@@ -103,17 +103,17 @@ public class GameControl {
         
         if (w > 2){
             result = "Warrior";
-            System.out.println(" your class is: Warrior");
+            MountKabru.getOutFile().println(" your class is: Warrior");
             return result;
         }
         if (m > 2) {
             result = "Mage";
-            System.out.println(" your class is: Mage");
+            MountKabru.getOutFile().println(" your class is: Mage");
             return result;
         }
         else{
             result = "Paladin";
-            System.out.println(" your class is: Paladin");
+            MountKabru.getOutFile().println(" your class is: Paladin");
             return result;
         }
         

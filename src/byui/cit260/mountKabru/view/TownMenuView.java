@@ -30,7 +30,7 @@ public class TownMenuView extends View {
         
         switch (choice){
             case "A": // adventure
-                System.out.println("AdventureView class");
+                this.console.println("AdventureView class");
                 break;
             case "T": // the tavern
                 TavernMenuView tavern = new TavernMenuView();
@@ -51,7 +51,7 @@ public class TownMenuView extends View {
                 
                 
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                this.console.println("\n*** Invalid selection *** Try again");
                 break;
         }
         

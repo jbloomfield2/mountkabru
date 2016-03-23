@@ -5,7 +5,13 @@
  */
 package byui.cit260.mountKabru.view;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import mountkabru.MountKabru;
 
 /**
  *
@@ -14,6 +20,9 @@ import java.util.Scanner;
 public abstract class View implements ViewInterface {
     
     protected String displayMessage;
+    
+    protected final BufferedReader keyboard = MountKabru.getInFile();
+    protected final PrintWriter console = MountKabru.getOutFile();
     
     public View(){   
     }
@@ -41,27 +50,32 @@ public abstract class View implements ViewInterface {
     @Override
     public String getInput(){
         
-        Scanner keyboard = new Scanner(System.in);
+        
         boolean valid = false;
         String value = null;
-        
-        //while a valid name has not been retrieved
-        while (!valid){
+        try {
+            //while a valid name has not been retrieved
+            while (!valid){
             
-            // prompt for the player's name
-            System.out.println("\n" + this.displayMessage);
             
-            // get the value entered from the keyboard
-            value = keyboard.nextLine();
-            value = value.trim();
-            
-            if(value.length() < 1){ // blank value entered
-                System.out.println("\n*** You must enter a value ***");
-                continue;
+                // prompt for the player's name
+                this.console.println("\n" + this.displayMessage);
+                
+                // get the value entered from the keyboard
+                value = this.keyboard.readLine();
+                value = value.trim();
+                
+                if(value.length() < 1){ // blank value entered
+                    this.console.println("\n*** You must enter a value ***");
+                    continue;
+                }
+                
+                    break;
+                }
+            } catch (Exception e) {
+                this.console.println("Error reading input: " + e.getMessage());
             }
-            
-            break;
-        }
+        
         
         return value; // return name
     }

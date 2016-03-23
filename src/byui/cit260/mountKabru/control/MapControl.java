@@ -9,6 +9,7 @@ import byui.cit260.mountKabru.model.Locations;
 import byui.cit260.mountKabru.model.Scene;
 import byui.cit260.mountKabru.model.SceneType;
 import java.util.ArrayList;
+import mountkabru.MountKabru;
 
 /**
  *
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 public class MapControl {
 
     static ArrayList<Locations> createLocations() {
-        System.out.println("createlocations called");
+        MountKabru.getOutFile().println("createlocations called");
         return null;
     }
 

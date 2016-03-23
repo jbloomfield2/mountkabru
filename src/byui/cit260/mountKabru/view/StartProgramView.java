@@ -24,7 +24,7 @@ public class StartProgramView extends View {
     }
 
     private void displayBanner() {
-        System.out.println("\n************************************************************\n" +
+        this.console.println("\n************************************************************\n" +
                             "*--------------------------Welcome-------------------------*\n" +
                             "*-----------------------------to---------------------------*\n" +
                             "*-------------------------Mount Kabru----------------------*\n" +
@@ -54,7 +54,7 @@ public class StartProgramView extends View {
     public boolean doAction(String playersName) {
         
         if (playersName.length() < 2) {
-            System.out.println("\nInvalid player name:"
+            this.console.println("\nInvalid player name:"
                     + "The name must be greater than one character in length");
             return false;
         }
@@ -63,7 +63,7 @@ public class StartProgramView extends View {
         Player player = GameControl.createPlayer(playersName);
         
         if (player == null) { // if unsuccesful
-            System.out.println("\nError creating player.");
+            this.console.println("\nError creating player.");
             return false;
         }
         
@@ -79,7 +79,7 @@ public class StartProgramView extends View {
     
 
     private void displayNextView(Player player) {
-        System.out.println("\n============================================="
+        this.console.println("\n============================================="
                            + "\n Welcome to the game " + player.getName()
                            + "\n We hope you have a lot of fun!"
                            + "\n============================================="

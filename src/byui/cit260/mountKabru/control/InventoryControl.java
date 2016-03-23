@@ -77,7 +77,7 @@ public class InventoryControl {
                     }
                                
                     if (inv.getShillings() > 50){
-                        System.out.println("\nThanks for your business. Good luck!");
+                        MountKabru.getOutFile().println("\nThanks for your business. Good luck!");
                     }
         }
 }

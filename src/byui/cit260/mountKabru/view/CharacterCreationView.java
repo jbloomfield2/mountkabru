@@ -34,7 +34,7 @@ public class CharacterCreationView extends View {
     public boolean doAction(String answer1) {
         answer1 = answer1.toUpperCase();
         if (!answer1.equals("W") && !answer1.equals("M")){
-            System.out.print("invalid response");
+            this.console.print("invalid response");
             return false;
         }
             
@@ -47,7 +47,7 @@ public class CharacterCreationView extends View {
         String answer2 = this.getInput();
         answer2 = answer2.toUpperCase();
         if (!answer1.equals("W") && !answer1.equals("M")){
-            System.out.print("invalid response");
+            this.console.print("invalid response");
             return false;
         }
         
@@ -59,7 +59,7 @@ public class CharacterCreationView extends View {
         String answer3 = this.getInput();
         answer3 = answer3.toUpperCase();
         if (!answer1.equals("W") && !answer1.equals("M")){
-            System.out.print("invalid response");
+            this.console.print("invalid response");
             return false;
         }
         
@@ -72,10 +72,10 @@ public class CharacterCreationView extends View {
         ageString = this.getInput();
         try{
             int age = Integer.parseInt(ageString);
-            System.out.println("This is your age " + age);
+            this.console.println("This is your age " + age);
         } catch (NumberFormatException nf){
             
-            System.out.println("\nYou must enter a valid number"
+            this.console.println("\nYou must enter a valid number"
                               + " Try again");
             return false;
         }     
@@ -88,7 +88,7 @@ public class CharacterCreationView extends View {
         classResult = gamec.calcClass(answer1,answer2,answer3);
         }
         catch (GameControlException e){
-            System.out.println(e.getMessage());
+            this.console.println(e.getMessage());
             return false;
             
         }

@@ -36,13 +36,13 @@ class HelpMenuView extends View {
         
         switch (choice){
             case "G": // Goal of game
-                System.out.println("Goal of game info");
+                this.console.println("Goal of game info");
                 break;
             case "T": // the town
-                System.out.println("The town info");
+                this.console.println("The town info");
                 break;
             case "A": // Adventuring
-                System.out.println("Adventuring info");
+                this.console.println("Adventuring info");
                 break;
             case "I"://inventory
                 this.displayInventoryList();
@@ -50,7 +50,7 @@ class HelpMenuView extends View {
             case "Q"://back to main menu
                 return true;
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                this.console.println("\n*** Invalid selection *** Try again");
                 break;
         }
         
@@ -64,12 +64,12 @@ class HelpMenuView extends View {
     private void displayInventoryList() {
         Inventory inv = InventoryControl.getSortedInventoryList();
         String itemName,itemDesc;
-        System.out.println("items available");
-        System.out.println("type" + "\t\t\t" + "description" + "\t\t" + "value");
+        this.console.println("items available");
+        this.console.println("type" + "\t\t\t" + "description" + "\t\t" + "value");
        
        for (Item item : inv.getItems()){
            itemName = item.getItemType();
-           System.out.println(item.getItemType()+ "\t" +
+           this.console.println(item.getItemType()+ "\t" +
                               item.getDescription()+ "\t\t" +
                               item.getValue());
                               
