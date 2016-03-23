@@ -5,6 +5,9 @@
  */
 package byui.cit260.mountKabru.view;
 
+import byui.cit260.mountKabru.control.ActorControl;
+import byui.cit260.mountKabru.model.Game;
+
 /**
  *
  * @author Andrew
@@ -28,7 +31,8 @@ public class TavernMenuView extends View{
                         "*----[R] - Return to Town----------------------------------*\n" +
                         "*----------------------------------------------------------*\n" +
                         "************************************************************");
-    }          
+    }
+    Game game = mountkabru.MountKabru.getCurrentGame();
 
     @Override
     public boolean doAction(String choice) {
@@ -63,11 +67,14 @@ public class TavernMenuView extends View{
     }
 
     private void talkToTavernOwner() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ActorControl ac = new ActorControl();
+        ac.talkToActor(game.getActor().getPlayerStats().getLevel());
     }
 
     private void sleep() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        game.getActor().getPlayerStats().setHealth(game.getActor().getPlayerStats().getMaxHealth());
+        game.getActor().getPlayerStats().setMana(game.getActor().getPlayerStats().getMaxMana());
+        
     }
 
     private void buyHealthPotion() {
