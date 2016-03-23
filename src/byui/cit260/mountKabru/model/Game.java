@@ -14,6 +14,7 @@ import java.util.ArrayList;
  */
 public class Game implements Serializable {
     
+    private int day; //keep track of days passed in game
     private Actor actor;
     private ArrayList<Locations> locations = new ArrayList<>();
     private Player player;
@@ -21,6 +22,15 @@ public class Game implements Serializable {
     public Game() {
     }
 
+    public int getDay() {
+        return day;
+    }
+
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    
     public Actor getActor() {
         return actor;
     }

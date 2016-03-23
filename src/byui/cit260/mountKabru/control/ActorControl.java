@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package byui.cit260.mountKabru.control;
+import byui.cit260.mountKabru.exceptions.ActorControlException;
 import byui.cit260.mountKabru.model.Stats;
+import byui.cit260.mountKabru.model.TavernKeepResponses;
 import java.util.Random;
 import mountkabru.MountKabru;
 /**
@@ -14,8 +16,15 @@ import mountkabru.MountKabru;
 public class ActorControl {
 
     static Stats createPlayerStats() {
-        MountKabru.getOutFile().println("create stats called");
-        return null;
+        Stats playerStats = new Stats();
+        playerStats.setAttack(3);
+        playerStats.setDefence(1);
+        playerStats.setMana(15);
+        playerStats.setHealth(20);
+        playerStats.setMaxHealth(20);
+        playerStats.setLevel(1);
+        playerStats.setMaxMana(20);
+        return playerStats;
     }
     
     public int talkToActor(int level){
@@ -59,5 +68,15 @@ public class ActorControl {
           
           return response;
           
+    }
+    
+    public String actorResponse(int response){
+        String temp;
+        for (TavernKeepResponses t: TavernKeepResponses.values() )
+            if (t.ordinal() == response)
+                return t.getRESPONSE();
+        
+        return null;
+        
     }
 }
