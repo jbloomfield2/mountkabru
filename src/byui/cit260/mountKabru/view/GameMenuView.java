@@ -5,9 +5,11 @@
  */
 package byui.cit260.mountKabru.view;
 
+import byui.cit260.mountKabru.control.GameControl;
 import byui.cit260.mountKabru.control.InventoryControl;
 import byui.cit260.mountKabru.model.Inventory;
 import byui.cit260.mountKabru.model.Item;
+import mountkabru.MountKabru;
 
 /**
  *
@@ -37,7 +39,9 @@ public class GameMenuView extends View{
                 showInventory();
             case "R": // back to last menu
                 return true;
-            
+            case "S":
+                this.saveGame();
+                break;
         }
 
    
@@ -56,6 +60,20 @@ public class GameMenuView extends View{
                               "quantity: " + item.getQuantity() +
                               "\tvalue: " + item.getValue()+ " shillings");
                               
+        }
+    }
+
+    private void saveGame() {
+        // prompt for and get the name of the file to save the game in
+        this.displayMessage = "\nEnter the file path for file where the game"
+                           + " is to be savaed";
+        String filePath = this.getInput();
+        
+        try {
+            // save the game to the speciried file
+            GameControl.saveGame(MountKabru.getCurrentGame(), filePath);
+        } catch (Exception ex){
+            ErrorView.display("GameMenuView", ex.getMessage());
         }
     }
     
