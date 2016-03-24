@@ -6,8 +6,10 @@
 package byui.cit260.mountKabru.view;
 
 import byui.cit260.mountKabru.control.InventoryControl;
+import byui.cit260.mountKabru.model.Game;
 import byui.cit260.mountKabru.model.Inventory;
 import byui.cit260.mountKabru.model.Item;
+import mountkabru.MountKabru;
 
 /**
  *
@@ -35,6 +37,10 @@ public class GameMenuView extends View{
         switch (choice){
             case "I":// show sorted inventory list
                 showInventory();
+                break;
+            case "C": //show character info
+                showCharacterInfo();
+                break;
             case "R": // back to last menu
                 return true;
             
@@ -57,6 +63,20 @@ public class GameMenuView extends View{
                               "\tvalue: " + item.getValue()+ " shillings");
                               
         }
+    }
+
+    private void showCharacterInfo() {
+        Game game = MountKabru.getCurrentGame();
+        this.console.println("\n================================="
+                            + "\n" + game.getPlayer().getName()
+                            + "\nLevel " + game.getActor().getPlayerStats().getLevel() + " " + game.getPlayer().getPlayerClass()
+                            + "\n" + game.getActor().getPlayerStats().getHealth() + "/" + game.getActor().getPlayerStats().getMaxHealth() + " Health"
+                            + "\n" + game.getActor().getPlayerStats().getMana() + "/" +game.getActor().getPlayerStats().getMaxMana() + " Mana"
+                            + "\n" + game.getActor().getPlayerStats().getAttack() + " Attack power"
+                            + "\n" + game.getActor().getPlayerStats().getDefence() + " Defense power"
+                            + "\n" + game.getActor().getInventory().getXp() + " experience, " + game.getActor().getInventory().getXpToNextLevel() + " until next level up"
+                            +"\nyou have " + game.getActor().getInventory().getShillings() + " shillings"
+                            + "\n================================");
     }
     
 }

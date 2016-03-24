@@ -13,13 +13,13 @@ public class BlacksmithView extends View {
     
     public BlacksmithView(){
         super("\n************************************************************\n" +
-                        "*----Blacksmith Menu---------------------------------------*\n" +
-                        "*--------What can I do for you?----------------------------*\n" +
-                        "*----------------------------------------------------------*\n" +
-                        "*----[A] - Enhance your Armor (Armor bonus)?---------------*\n" +
-                        "*----[W] - Enhance your Weapon (Weapon bonus)?-------------*\n" +
-                        "*----[R] - Return to town----------------------------------*\n" +
-                        "************************************************************");
+                "*----Blacksmith Menu---------------------------------------*\n" +
+                "*--------What can I do for you?----------------------------*\n" +
+                "*----------------------------------------------------------*\n" +
+                "*----[A] - Enhance your Armor (Armor bonus)?---------------*\n" +
+                "*----[W] - Enhance your Weapon (Weapon bonus)?-------------*\n" +
+                "*----[R] - Return to town----------------------------------*\n" +
+                "************************************************************");
     }
     
     @Override
@@ -35,8 +35,7 @@ public class BlacksmithView extends View {
                 this.addWeaponBonus();
                 break;
             case "R":
-                this.returnToTown();
-                break;
+                return true;
             default:
                 this.console.println("\n*** Invalid selection *** Try again");
                 break;
@@ -53,8 +52,5 @@ public class BlacksmithView extends View {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void returnToTown() {
-        TownMenuView town = new TownMenuView();
-        town.display();
-    }
+
 }

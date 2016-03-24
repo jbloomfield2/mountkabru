@@ -30,7 +30,8 @@ public class TownMenuView extends View {
         
         switch (choice){
             case "A": // adventure
-                this.console.println("AdventureView class");
+                AdventureView av = new AdventureView();
+                av.display();
                 break;
             case "T": // the tavern
                 TavernMenuView tavern = new TavernMenuView();
