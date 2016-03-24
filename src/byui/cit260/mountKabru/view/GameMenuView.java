@@ -27,8 +27,7 @@ public class GameMenuView extends View{
               + "\nC - View character sheet"
               + "\nS - Save game"
               + "\nH - View help menu"
-              + "\nQ - Quit game(unsaved game will be lost)"
-              + "\nR - Return to previous Menu"
+              + "\nQ - Return to previous Menu"
               + "\n----------------------------------------");
     }
     @Override
@@ -42,10 +41,11 @@ public class GameMenuView extends View{
             case "C": //show character info
                 showCharacterInfo();
                 break;
-            case "R": // back to last menu
-                return true;
             case "S":
                 this.saveGame();
+                break;
+            case "H":
+                this.showHelp();
                 break;
         }
 
@@ -98,4 +98,12 @@ public class GameMenuView extends View{
         }
     
     }
+
+    private void showHelp() {
+        HelpMenuView help = new HelpMenuView();
+        help.display();
+    }
+
+
+    
 }

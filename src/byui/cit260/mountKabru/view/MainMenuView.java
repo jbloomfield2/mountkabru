@@ -45,6 +45,8 @@ public class MainMenuView extends View {
             case "S":
                 this.saveGame();
                 break;
+            case "Q":
+                return true;
             default:
                 this.console.println("\n*** Invalid selection *** Try again");
                 break;

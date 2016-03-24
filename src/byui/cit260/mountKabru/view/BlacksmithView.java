@@ -18,7 +18,7 @@ public class BlacksmithView extends View {
                 "*----------------------------------------------------------*\n" +
                 "*----[A] - Enhance your Armor (Armor bonus)?---------------*\n" +
                 "*----[W] - Enhance your Weapon (Weapon bonus)?-------------*\n" +
-                "*----[R] - Return to town----------------------------------*\n" +
+                "*----[Q] - Return to town----------------------------------*\n" +
                 "************************************************************");
     }
     
@@ -34,8 +34,6 @@ public class BlacksmithView extends View {
             case "W": // display the help menu
                 this.addWeaponBonus();
                 break;
-            case "R":
-                return true;
             default:
                 this.console.println("\n*** Invalid selection *** Try again");
                 break;

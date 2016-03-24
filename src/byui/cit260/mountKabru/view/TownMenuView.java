@@ -21,6 +21,7 @@ public class TownMenuView extends View {
               + "\nP - Train at the Pit"
               + "\nB - Visit the Blacksmith"
               + "\nM - Game Menu"
+              + "\nQ return to main menu"
               + "\n----------------------------------------");
     }
 

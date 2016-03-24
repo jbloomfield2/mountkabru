@@ -18,7 +18,7 @@ public class AdventureView extends View{
                 + "\nD-Dark forest recommended level 10-20"
                 + "\nH-High mountain recommended level 20+"
                 + "\nM-Show Game Menu"
-                + "\nR-return to previous menu"
+                + "\nQ-return to previous menu"
                 + "\n=======================================");
     }
     @Override
@@ -42,9 +42,6 @@ public class AdventureView extends View{
             case "H":{
                 this.goToHighMountain();
                 break;
-            }
-            case "R":{
-                return true;
             }
             case "M":{
                 this.showGameMenu();

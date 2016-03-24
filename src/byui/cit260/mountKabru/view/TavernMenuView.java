@@ -28,7 +28,7 @@ public class TavernMenuView extends View{
                         "*----[H] - Buy Health Potion-------------------------------*\n" +
                         "*----[M] - Buy Mana Potion---------------------------------*\n" +
                         "*----[A] - Available Quests--------------------------------*\n" +
-                        "*----[R] - Return to Town----------------------------------*\n" +
+                        "*----[Q] - Return to Town----------------------------------*\n" +
                         "*----------------------------------------------------------*\n" +
                         "************************************************************");
     }
@@ -56,9 +56,6 @@ public class TavernMenuView extends View{
                 break;
             case "A":
                 this.availableQuests();
-                break;
-            case "R":
-                this.returnToTown();
                 break;
             default:
                 this.console.println("\n*** Invalid selection *** Try again");

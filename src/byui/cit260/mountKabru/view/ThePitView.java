@@ -18,7 +18,7 @@ public class ThePitView extends View {
               + "\n----------------------------------------" 
               + "\nT - Train" 
               + "\nH - Help" 
-              + "\nR - Return to town" 
+              + "\nQ - Return to town" 
               + "\n----------------------------------------");
     }
     
@@ -34,8 +34,6 @@ public class ThePitView extends View {
                 HelpMenuView pitHelp = new HelpMenuView();
                 pitHelp.displayPitHelp();
                 break;
-            case "R":
-                return true;
 
             default:
                 this.console.println("invalid choice selected! please try again");
