@@ -6,6 +6,7 @@
 package byui.cit260.mountKabru.view;
 
 import byui.cit260.mountKabru.control.GameControl;
+import mountkabru.MountKabru;
 
 /**
  *
@@ -61,8 +62,24 @@ public class MainMenuView extends View {
     }
 
     private void startExistingGame() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        
+        //prompt for and get the name of the file to save the game in
+         this.displayMessage = "\nEnter the file path for file where the game"
+                           + " is to be savaed";
+        
+        String filePath = this.getInput();
+        
+        try {
+            // start a saved game
+            GameControl.getSavedGame(filePath);
+        } catch (Exception ex) {
+           ErrorView.display("MainMenuView", ex.getMessage());
+        }
+        
+        //display the game menu
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();
+        }
 
     private void displayHelpMenu() {
         HelpMenuView helpMenu = new HelpMenuView();
@@ -70,6 +87,16 @@ public class MainMenuView extends View {
     }
 
     private void saveGame() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // prompt for and get the name of the file to save the game in
+        this.displayMessage = "\nEnter the file path for file where the game"
+                           + " is to be savaed";
+        String filePath = this.getInput();
+        
+        try {
+            // save the game to the speciried file
+            GameControl.saveGame(MountKabru.getCurrentGame(), filePath);
+        } catch (Exception ex){
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
     }
 }

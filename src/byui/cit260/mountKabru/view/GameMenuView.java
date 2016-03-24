@@ -5,6 +5,7 @@
  */
 package byui.cit260.mountKabru.view;
 
+import byui.cit260.mountKabru.control.GameControl;
 import byui.cit260.mountKabru.control.InventoryControl;
 import byui.cit260.mountKabru.model.Game;
 import byui.cit260.mountKabru.model.Inventory;
@@ -43,7 +44,9 @@ public class GameMenuView extends View{
                 break;
             case "R": // back to last menu
                 return true;
-            
+            case "S":
+                this.saveGame();
+                break;
         }
 
    
@@ -70,6 +73,7 @@ public class GameMenuView extends View{
         this.console.println("\n================================="
                             + "\n" + game.getPlayer().getName()
                             + "\nLevel " + game.getActor().getPlayerStats().getLevel() + " " + game.getPlayer().getPlayerClass()
+                            + "\nAdventurer for: " + game.getDay() + " days"
                             + "\n" + game.getActor().getPlayerStats().getHealth() + "/" + game.getActor().getPlayerStats().getMaxHealth() + " Health"
                             + "\n" + game.getActor().getPlayerStats().getMana() + "/" +game.getActor().getPlayerStats().getMaxMana() + " Mana"
                             + "\n" + game.getActor().getPlayerStats().getAttack() + " Attack power"
@@ -77,6 +81,21 @@ public class GameMenuView extends View{
                             + "\n" + game.getActor().getInventory().getXp() + " experience, " + game.getActor().getInventory().getXpToNextLevel() + " until next level up"
                             +"\nyou have " + game.getActor().getInventory().getShillings() + " shillings"
                             + "\n================================");
+    
     }
     
+    private void saveGame() {
+        // prompt for and get the name of the file to save the game in
+        this.displayMessage = "\nEnter the file path for file where the game"
+                           + " is to be savaed";
+        String filePath = this.getInput();
+        
+        try {
+            // save the game to the speciried file
+            GameControl.saveGame(MountKabru.getCurrentGame(), filePath);
+        } catch (Exception ex){
+            ErrorView.display("GameMenuView", ex.getMessage());
+        }
+    
+    }
 }
