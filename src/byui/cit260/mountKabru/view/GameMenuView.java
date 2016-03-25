@@ -9,6 +9,10 @@ import byui.cit260.mountKabru.control.GameControl;
 import byui.cit260.mountKabru.control.InventoryControl;
 import byui.cit260.mountKabru.model.Inventory;
 import byui.cit260.mountKabru.model.Item;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import mountkabru.MountKabru;
 
 /**
@@ -23,6 +27,7 @@ public class GameMenuView extends View{
               + " \nGame menu"
               + "\n----------------------------------------"
               + "\nI - view inventory"
+              + "\nP - Print inventory list"          
               + "\nC - View character sheet"
               + "\nS - Save game"
               + "\nH - View help menu"
@@ -42,8 +47,16 @@ public class GameMenuView extends View{
             case "S":
                 this.saveGame();
                 break;
+            case "P":
+        {
+            try {
+                this.printList();
+            } catch (IOException ex) {
+                Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-
+                return true;
+        }        
    
     return false;
     }
@@ -76,5 +89,33 @@ public class GameMenuView extends View{
             ErrorView.display("GameMenuView", ex.getMessage());
         }
     }
+
+    private void printList() throws IOException {
+        // prompt for and get the name of the file to save the game in
+        this.displayMessage = "\nEnter the file path for file where the list"
+                           + " is to be saved";
+        String path = this.getInput();
+        Inventory inv = InventoryControl.getSortedInventoryList();
+        String itemName;
+        PrintWriter out = null;
+        
+        try( PrintWriter fops = new PrintWriter(path)){
+            fops.println("------------Inventory List---------------");
+            for (Item item : inv.getItems()){
+           itemName = item.getItemType();
+           fops.println(item.getItemType()+ "\t" +
+                              item.getDescription()+ "\t\t" +
+                              "quantity: " + item.getQuantity() +
+                              "\tvalue: " + item.getValue()+ " shillings");
+            
+        }
+        }
+        catch (Exception ex){
+            ErrorView.display("GameMenuView", ex.getMessage());
+        }
+        finally{
+                this.console.println("DONE!"); 
+            }
+        }
     
 }
