@@ -7,6 +7,7 @@ package byui.cit260.mountKabru.view;
 
 import byui.cit260.mountKabru.control.GameControl;
 import byui.cit260.mountKabru.control.InventoryControl;
+import byui.cit260.mountKabru.model.Game;
 import byui.cit260.mountKabru.model.Inventory;
 import byui.cit260.mountKabru.model.Item;
 import java.io.IOException;
@@ -31,8 +32,7 @@ public class GameMenuView extends View{
               + "\nC - View character sheet"
               + "\nS - Save game"
               + "\nH - View help menu"
-              + "\nQ - Quit game(unsaved game will be lost)"
-              + "\nR - Return to previous Menu"
+              + "\nQ - Return to previous Menu"
               + "\n----------------------------------------");
     }
     @Override
@@ -42,10 +42,15 @@ public class GameMenuView extends View{
         switch (choice){
             case "I":// show sorted inventory list
                 showInventory();
-            case "R": // back to last menu
-                return true;
+                break;
+            case "C": //show character info
+                showCharacterInfo();
+                break;
             case "S":
                 this.saveGame();
+                break;
+            case "H":
+                this.showHelp();
                 break;
             case "P":
         {
@@ -76,6 +81,22 @@ public class GameMenuView extends View{
         }
     }
 
+    private void showCharacterInfo() {
+        Game game = MountKabru.getCurrentGame();
+        this.console.println("\n================================="
+                            + "\n" + game.getPlayer().getName()
+                            + "\nLevel " + game.getActor().getPlayerStats().getLevel() + " " + game.getPlayer().getPlayerClass()
+                            + "\nAdventurer for: " + game.getDay() + " days"
+                            + "\n" + game.getActor().getPlayerStats().getHealth() + "/" + game.getActor().getPlayerStats().getMaxHealth() + " Health"
+                            + "\n" + game.getActor().getPlayerStats().getMana() + "/" +game.getActor().getPlayerStats().getMaxMana() + " Mana"
+                            + "\n" + game.getActor().getPlayerStats().getAttack() + " Attack power"
+                            + "\n" + game.getActor().getPlayerStats().getDefence() + " Defense power"
+                            + "\n" + game.getActor().getInventory().getXp() + " experience, " + game.getActor().getInventory().getXpToNextLevel() + " until next level up"
+                            +"\nyou have " + game.getActor().getInventory().getShillings() + " shillings"
+                            + "\n================================");
+    
+    }
+    
     private void saveGame() {
         // prompt for and get the name of the file to save the game in
         this.displayMessage = "\nEnter the file path for file where the game"
@@ -88,7 +109,14 @@ public class GameMenuView extends View{
         } catch (Exception ex){
             ErrorView.display("GameMenuView", ex.getMessage());
         }
+    
     }
+
+    private void showHelp() {
+        HelpMenuView help = new HelpMenuView();
+        help.display();
+    }
+
 
     private void printList() throws IOException {
         // prompt for and get the name of the file to save the game in

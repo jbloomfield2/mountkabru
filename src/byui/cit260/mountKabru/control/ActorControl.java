@@ -20,10 +20,10 @@ public class ActorControl {
         playerStats.setAttack(3);
         playerStats.setDefence(1);
         playerStats.setMana(15);
-        playerStats.setHealth(20);
+        playerStats.setHealth(19);
         playerStats.setMaxHealth(20);
         playerStats.setLevel(1);
-        playerStats.setMaxMana(20);
+        playerStats.setMaxMana(15);
         return playerStats;
     }
     

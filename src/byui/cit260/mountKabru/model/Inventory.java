@@ -17,6 +17,7 @@ public class Inventory implements Serializable{
     
     private double shillings;
     private double xp;
+    private double xpToNextLevel;
     private ItemList itemlist;
     private ArrayList<Item> items = new ArrayList<>();
 
@@ -38,6 +39,15 @@ public class Inventory implements Serializable{
     public void setXp(double xp) {
         this.xp = xp;
     }
+
+    public double getXpToNextLevel() {
+        return xpToNextLevel;
+    }
+
+    public void setXpToNextLevel(double xpToNextLevel) {
+        this.xpToNextLevel = xpToNextLevel;
+    }
+    
 
     public ItemList getItemlist() {
         return itemlist;

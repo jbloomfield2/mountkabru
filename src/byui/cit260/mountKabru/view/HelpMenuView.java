@@ -47,8 +47,6 @@ class HelpMenuView extends View {
             case "I"://inventory
                 this.displayInventoryList();
                 break;
-            case "Q"://back to main menu
-                return true;
             default:
                 this.console.println("\n*** Invalid selection *** Try again");
                 break;
