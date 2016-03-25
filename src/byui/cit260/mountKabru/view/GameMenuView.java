@@ -10,6 +10,8 @@ import byui.cit260.mountKabru.control.InventoryControl;
 import byui.cit260.mountKabru.model.Game;
 import byui.cit260.mountKabru.model.Inventory;
 import byui.cit260.mountKabru.model.Item;
+import java.io.IOException;
+import java.io.PrintWriter;
 import mountkabru.MountKabru;
 
 /**
@@ -25,6 +27,7 @@ public class GameMenuView extends View{
               + "\n----------------------------------------"
               + "\nI - view inventory"
               + "\nC - View character sheet"
+              + "\nF - Print character report to file"
               + "\nS - Save game"
               + "\nH - View help menu"
               + "\nQ - Return to previous Menu"
@@ -41,6 +44,9 @@ public class GameMenuView extends View{
             case "C": //show character info
                 showCharacterInfo();
                 break;
+            case "F"://print character report
+                this.printCharacterReport();
+                return true;
             case "S":
                 this.saveGame();
                 break;
@@ -104,6 +110,50 @@ public class GameMenuView extends View{
         help.display();
     }
 
+    private void printCharacterReport() {
+        this.displayMessage = "Enter a file path where the report will be saved";
+        String path = this.getInput();
+        try{
+            this.saveReport(path);
+        }
+        catch(Exception ex){
+            ErrorView.display("GameMenuView", ex.getMessage());
+        }
+        finally{
+            this.console.println("report saved sucessfully");
+            
+        }
+
 
     
+}
+
+    private void saveReport(String path){
+        PrintWriter out= null;
+        try{
+            out = new PrintWriter(path);
+            Game game = MountKabru.getCurrentGame();
+            
+             out.println("\n================================="
+                            + "\n" + game.getPlayer().getName()
+                            + "\nLevel " + game.getActor().getPlayerStats().getLevel() + " " + game.getPlayer().getPlayerClass()
+                            + "\nAdventurer for: " + game.getDay() + " days"
+                            + "\n" + game.getActor().getPlayerStats().getHealth() + "/" + game.getActor().getPlayerStats().getMaxHealth() + " Health"
+                            + "\n" + game.getActor().getPlayerStats().getMana() + "/" +game.getActor().getPlayerStats().getMaxMana() + " Mana"
+                            + "\n" + game.getActor().getPlayerStats().getAttack() + " Attack power"
+                            + "\n" + game.getActor().getPlayerStats().getDefence() + " Defense power"
+                            + "\n" + game.getActor().getInventory().getXp() + " experience, " + game.getActor().getInventory().getXpToNextLevel() + " until next level up"
+                            +"\nyou have " + game.getActor().getInventory().getShillings() + " shillings"
+                            + "\n================================");
+            
+        }
+        catch(IOException ex){
+            ErrorView.display("GameMenuView", ex.getMessage());
+        } 
+        finally{
+            if (out !=null){
+                out.close();   
+            }
+        }
+    }
 }
