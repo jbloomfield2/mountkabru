@@ -11,7 +11,20 @@ package byui.cit260.mountKabru.view;
  */
 public class AdventureView extends View{
     public AdventureView(){
-        super("\nChoose an area to visit"
+        super("                       ,sdPBbs.\n" +
+              "                      ,d$$$$$$$$b.                          PEAK\n" +
+              "                     d$P'`Y'`Y'`?$b\n" +
+              "                    d'    `  '  \\ `b\n" +
+              "                   /    |        \\  \\\n" +
+              "                  /    / \\       |   \\                      HIGH FOREST\n" +
+              "             _,--'        |      \\    |\n" +
+              "           /' _/          \\   |        \\\n" +
+              "        _/' /'             |   \\        `-.__\n" +
+              "    __/'       ,-'    /    |    |     \\      `--...__       JUNGLE\n" +
+              "  /'          /      |    / \\     \\     `-.           `\\\n" +
+              " /                   /   /    \\            \\            `-. PLAINS"  
+                
+                + "\nChoose an area to visit"
                 + "\n======================================="
                 + "\nP-Plains recommended level 1-5"
                 + "\nJ-Jungle recommended level 5-15"
@@ -58,11 +71,13 @@ public class AdventureView extends View{
     }
 
     private void goToPlains() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PlainsView plains = new PlainsView() {};
+        plains.display();
     }
 
     private void goToJungle() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JungleView jungle = new JungleView() {};
+        jungle.display();
     }
 
     private void goToDarkForest() {

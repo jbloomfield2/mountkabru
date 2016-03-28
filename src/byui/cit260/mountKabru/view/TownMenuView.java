@@ -12,16 +12,29 @@ package byui.cit260.mountKabru.view;
 public class TownMenuView extends View {
 
     public TownMenuView() {
-        super("\n"
+        super("\n                /^\\\n" +
+"      /^\\      /___\\                    /^\\\n" +
+"      \\/^\\     | # |__________         /^\\/\n" +
+"      \\| |     | # |__________\\        |_|/\n" +
+"               | _ | # # # # |    \n" +
+"               | H |         |\n" +
+"      /\\                \n" +
+"     /  \\     _,---._     _________________\n" +
+"    /    \\   /_______\\    )_ _ _ _ _ _ _ _(\n" +
+"   /\\    /   | # # # |   /_________________\\   _,---._\n" +
+"  /  \\  /|   |       |     | [+] [+] [+] |    /_______\\\n" +
+" /____\\//|                 |             |    | # # # |\n" +
+" |[+] |/                                      |       |\n" +
+" || | |      "
               + "\n----------------------------------------"
               + " \nWelcome to the Town"
               + "\n----------------------------------------"
-              + "\nA - go adventuring"
+              + "\nA - Go adventuring"
               + "\nT - Visit the Tavern"
               + "\nP - Train at the Pit"
               + "\nB - Visit the Blacksmith"
               + "\nM - Game Menu"
-              + "\nQ return to main menu"
+              + "\nQ - Return to main menu"
               + "\n----------------------------------------");
     }
 

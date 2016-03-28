@@ -61,23 +61,6 @@ public class CharacterCreationView extends View {
         if (!answer1.equals("W") && !answer1.equals("M")){
             this.console.print("invalid response");
             return false;
-        }
-        
-        
-        
-        this.displayMessage = "How old are you?";
-        
-        String ageString;
-        
-        ageString = this.getInput();
-        try{
-            int age = Integer.parseInt(ageString);
-            this.console.println("This is your age " + age);
-        } catch (NumberFormatException nf){
-            
-            this.console.println("\nYou must enter a valid number"
-                              + " Try again");
-            return false;
         }     
                 
                 
