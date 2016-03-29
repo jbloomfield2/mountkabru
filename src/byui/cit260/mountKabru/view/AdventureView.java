@@ -28,8 +28,8 @@ public class AdventureView extends View{
                 + "\n======================================="
                 + "\nP-Plains recommended level 1-5"
                 + "\nJ-Jungle recommended level 5-15"
-                + "\nD-Dark forest recommended level 10-20"
-                + "\nH-High mountain recommended level 20+"
+                + "\nD-Dark Forest recommended level 10-20"
+                + "\nH-High Mountain recommended level 20+"
                 + "\nM-Show Game Menu"
                 + "\nQ-return to previous menu"
                 + "\n=======================================");
@@ -81,11 +81,13 @@ public class AdventureView extends View{
     }
 
     private void goToDarkForest() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ForestView forest = new ForestView() {};
+        forest.display();
     }
 
     private void goToHighMountain() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        HighMountainView mount = new HighMountainView() {};
+        mount.display();
     }
 
     private void showGameMenu() {
