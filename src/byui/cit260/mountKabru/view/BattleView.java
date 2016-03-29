@@ -5,6 +5,8 @@
  */
 package byui.cit260.mountKabru.view;
 
+import byui.cit260.mountKabru.control.BattleControl;
+
 /**
  *
  * @author Andrew
@@ -49,7 +51,9 @@ public class BattleView extends View{
     }
 
     private void attack() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        BattleControl bc = new BattleControl();
+        int damage;
+        damage = bc.attack(0, 0, 0);
     }
 
     private void defend() {
