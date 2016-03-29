@@ -16,7 +16,7 @@ public class Game implements Serializable {
     
     private int day; //keep track of days passed in game
     private Actor actor;
-    private ArrayList<Locations> locations = new ArrayList<>();
+    private Locations locations;
     private Player player;
 
     public Game() {
@@ -48,11 +48,11 @@ public class Game implements Serializable {
         this.actor = actor;
     }
 
-    public ArrayList<Locations> getLocations() {
+    public Locations getLocations() {
         return locations;
     }
 
-    public void setLocations(ArrayList<Locations> Locations) {
+    public void setLocations(Locations Locations) {
         this.locations = Locations;
     }
 

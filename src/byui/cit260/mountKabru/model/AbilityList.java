@@ -12,7 +12,7 @@ import java.util.Objects;
  *
  * @author Andrew
  */
-public enum Ability implements Serializable{
+public enum AbilityList implements Serializable{
     
     Defend(0,0),
     Focus(0,0),
@@ -26,7 +26,7 @@ public enum Ability implements Serializable{
     private final double resourceCost;
     private final double damage;
 
-    Ability(double resCost, double dmg) {
+    AbilityList(double resCost, double dmg) {
         this.resourceCost = resCost;
         this.damage = dmg;
         

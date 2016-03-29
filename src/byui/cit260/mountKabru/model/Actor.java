@@ -41,6 +41,14 @@ public class Actor implements Serializable{
         this.playerStats = stats;
     }
 
+    public ActorList getActorList() {
+        return actorList;
+    }
+
+    public void setActorList(ActorList actorList) {
+        this.actorList = actorList;
+    }
+
     
 
     public Inventory getInventory() {
