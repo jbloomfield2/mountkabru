@@ -18,10 +18,9 @@ import java.util.Objects;/**
 public class Locations implements Serializable{
     
     private String areaName;
-    private String monsterType;
+    private EnemyActor[] monsterType = new EnemyActor[16];
     private String areaNumber;
     private Scene[] scenes = new Scene[8];
-    private ArrayList<Actor> actors;
 
     public Locations() {
     }
@@ -34,13 +33,15 @@ public class Locations implements Serializable{
         this.areaName = areaName;
     }
 
-    public String getMonsterType() {
+    public EnemyActor[] getMonsterType() {
         return monsterType;
     }
 
-    public void setMonsterType(String monsterType) {
-        this.monsterType = monsterType;
+    public void setMonsterType(EnemyActor[] Monstertype) {
+        this.monsterType = Monstertype;
     }
+
+
 
     public String getAreaNumber() {
         return areaNumber;
@@ -57,18 +58,6 @@ public class Locations implements Serializable{
     public void setScenes(Scene[] scenes) {
         this.scenes = scenes;
     }
-
-    public ArrayList<Actor> getActors() {
-        return actors;
-    }
-
-    public void setActors(ArrayList<Actor> actors) {
-        this.actors = actors;
-    }
-
-   
-    
-    
 
     @Override
     public int hashCode() {

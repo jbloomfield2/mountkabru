@@ -55,8 +55,8 @@ public class GameControl {
        inv = InventoryControl.createInventory();
        game.getActor().setInventory(inv);
        
-       ArrayList<Locations> locations = new ArrayList<>();
-       locations = MapControl.createLocations();
+       Locations locations = new Locations();
+       locations = MapControl.createMap();
        game.setLocations(locations);
        
        QuestLog quests = new QuestLog();
@@ -66,7 +66,6 @@ public class GameControl {
        playerStats = ActorControl.createPlayerStats();
        game.getActor().setPlayerStats(playerStats);
        
-       MapControl.CreateMap();
        
        
        

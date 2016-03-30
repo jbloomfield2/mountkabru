@@ -4,13 +4,18 @@
  * and open the template in the editor.
  */
 package byui.cit260.mountKabru.control;
+import byui.cit260.mountKabru.model.ActorList;
+import byui.cit260.mountKabru.model.EnemyActor;
+import byui.cit260.mountKabru.model.Game;
 import java.util.Random;
+import mountkabru.MountKabru;
 
 /**
  *
  * @author jacob bloomfield
  */
 public class BattleControl {
+    Game game = MountKabru.getCurrentGame();
     
     public int attack(int atk,int atkBonus,int def){
         Random rng = new Random();
@@ -78,5 +83,33 @@ public class BattleControl {
             return 0;
     
         return totalSpell;
+    }
+    
+    public EnemyActor plainsEncounter(){
+        Random rnd = new Random();
+        int rand = rnd.nextInt(100);//get a random number
+        EnemyActor[] enemies = game.getLocations().getMonsterType();//retrieve list of monsters, only 0-3 can be found in plains
+        EnemyActor monster = new EnemyActor();//this will be the monster encountered
+
+        if (rand < 25){
+            monster = enemies[ActorList.Goblin.ordinal()];//encountered goblin
+            return monster;
+        }
+        if (rand < 45){
+            monster = enemies[ActorList.Wolves.ordinal()];//encountered wolf
+            return monster;
+        }
+        if (rand < 65){
+            monster = enemies[ActorList.Kobold.ordinal()];//encountered kobold
+            return monster;
+        }
+        if (rand < 80){
+            monster = enemies[ActorList.GiantSpider.ordinal()];//encountered giant spider
+            return monster;
+        }
+        if (rand > 80)
+            return monster;//20% chance to not encounter anything
+
+        return monster;
     }
 }
