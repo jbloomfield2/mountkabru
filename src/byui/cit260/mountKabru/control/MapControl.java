@@ -25,11 +25,12 @@ public class MapControl {
     static Locations createLocations() {
         Locations temp = new Locations();
         EnemyActor enemies[]= new EnemyActor[16];
-        EnemyActor currentEnemy = new EnemyActor();
+        int i = 0;
         for (ActorList actors: ActorList.values()){//build array of monster data
-            currentEnemy.setName(actors.getName());
-            currentEnemy.setStats(actors.getMONSTERSTATS());
-            enemies[actors.ordinal()] = currentEnemy;
+            enemies[i] = new EnemyActor();
+            enemies[i].setName(actors.getName());
+            enemies[i].setStats(actors.getMONSTERSTATS());
+            i++;
         }
         temp.setMonsterType(enemies);
         return temp;
@@ -48,7 +49,8 @@ public class MapControl {
     }
 
     private static Scene[] createScenes() {
-    Scene[] scenes = new Scene[SceneType.values().length];
+
+        Scene[] scenes = new Scene[SceneType.values().length];
     
     Scene town = new Scene();
     town.setName("Town");

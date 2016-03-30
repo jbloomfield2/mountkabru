@@ -41,7 +41,9 @@ import java.io.Serializable;
         temp.setAttack(atk);
         temp.setDefence(def);
         temp.setHealth(health);
+        temp.setMaxHealth(health);
         temp.setMana(mana);
+        temp.setMaxMana(mana);
         this.MONSTERSTATS = temp;
         
         
