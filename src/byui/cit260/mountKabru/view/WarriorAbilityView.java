@@ -5,6 +5,8 @@
  */
 package byui.cit260.mountKabru.view;
 
+import byui.cit260.mountKabru.model.AbilityList;
+
 /**
  *
  * @author Andrew

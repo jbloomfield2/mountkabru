@@ -14,8 +14,7 @@ import byui.cit260.mountKabru.model.EnemyActor;
  */
 public abstract class PlainsView extends View {
     public PlainsView(){
-        super("                                                 \n" +
-              "                                     /\\\n" +
+        super("                                     /\\\n" +
               "                                   .'  \\ \n" +
               "                                  /     \\ \n" +
               "                       .'\\      .'       \\ \n" +
@@ -27,8 +26,6 @@ public abstract class PlainsView extends View {
               "        .'                       \\       .-'                   `-.\n" +
               "                                                                  `-.\n" +
               "   .-------------------'''''''''''''''              _.--      .'\n" +
-              "                                ___..         _.--''        .'\n" +
-              "                          --''''             '            .'\n" +
                 "\nThe Plains"
                 + "\n======================================="
                 + "\nS-Search for Monster"
