@@ -6,6 +6,8 @@
 package byui.cit260.mountKabru.view;
 
 import byui.cit260.mountKabru.control.BattleControl;
+import byui.cit260.mountKabru.model.Game;
+import mountkabru.MountKabru;
 
 /**
  *
@@ -17,7 +19,6 @@ public class BattleView extends View{
         super("\n========================================" +
               "\n              Battle!                   " +
               "\n  -'A'- Attack!                         " +
-              "\n  -'D'- Defend!                         " +
               "\n  -'M'- Abilites                        " +
               "\n  -'R'- Run Away!                       " +
               "\n========================================");
@@ -30,11 +31,8 @@ public class BattleView extends View{
         choice = choice.toUpperCase(); // convert choice to upper case
         
         switch (choice){
-            case "A": // create and start a new game
+            case "A":
                 this.attack();
-                break;
-            case "D": // display the help menu
-                this.defend();
                 break;
             case "B":
                 this.ability();
@@ -55,13 +53,24 @@ public class BattleView extends View{
         int damage;
         damage = bc.attack(0, 0, 0);
     }
-
-    private void defend() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    
     private void ability() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Game game = MountKabru.getCurrentGame();
+        
+        if(game.getPlayer().getPlayerClass() == "Warrior"){
+            WarriorAbilityView view1 = new WarriorAbilityView();
+            view1.display();
+        }
+        
+        if(game.getPlayer().getPlayerClass() == "Mage"){
+            MageAbilityView view2 = new MageAbilityView();
+            view2.display();
+        }
+        
+        if(game.getPlayer().getPlayerClass() == "Paladin"){
+            PaladinAbilityView view3 = new PaladinAbilityView();
+            view3.display();
+        }
     }
 
     private void runAway() {
