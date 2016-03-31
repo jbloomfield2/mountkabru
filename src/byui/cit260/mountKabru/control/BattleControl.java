@@ -15,11 +15,27 @@ import mountkabru.MountKabru;
  * @author jacob bloomfield
  */
 public class BattleControl {
-    Game game = MountKabru.getCurrentGame();
+
+    public static void victory(EnemyActor e) {
+        double xp = game.getActor().getInventory().getXp();
+        double gainedXp = e.getStats().getMaxHealth() * 4;//award xp equal to 4x the enemies hp
+        xp += gainedXp;
+        game.getActor().getInventory().setXp(xp);
+        if (game.getActor().getInventory().getXp() >= game.getActor().getInventory().getXpToNextLevel())
+           BattleControl.levelUp();
+        
+        double shillings,gainedShillings;
+        shillings = game.getActor().getInventory().getShillings();
+        gainedShillings = e.getStats().getMaxHealth() / 2;
+        shillings += gainedShillings;
+        game.getActor().getInventory().setShillings(shillings);
+                
+    }
+   static Game game = MountKabru.getCurrentGame();
     
-    public int attack(int atk,int atkBonus,int def){
+    public double attack(double atk,double atkBonus,double def){
         Random rng = new Random();
-        int totalAttack = 0;
+        double totalAttack = 0;
         
         //check for vaild range
         if (atk < 1)
@@ -28,7 +44,7 @@ public class BattleControl {
         if (atk > 50)
             return 50; //50 is the highest possible damage
         
-        if (atkBonus < 1)
+        if (atkBonus < 0)
             return -1;
         
         if (atkBonus > 50)
@@ -111,5 +127,19 @@ public class BattleControl {
             return monster;//20% chance to not encounter anything
 
         return monster;
+    }
+
+    private static void levelUp() {
+        game.getActor().getInventory().setXp(0);//reset experience counter
+        double nextLevel = game.getActor().getInventory().getXpToNextLevel() + 50;
+        game.getActor().getInventory().setXpToNextLevel(nextLevel);
+        
+        game.getActor().getPlayerStats().setLevel(game.getActor().getPlayerStats().getLevel()+1);
+        game.getActor().getPlayerStats().setAttack(game.getActor().getPlayerStats().getAttack()+2);
+        game.getActor().getPlayerStats().setDefence(game.getActor().getPlayerStats().getDefence()+1);
+        game.getActor().getPlayerStats().setHealth(game.getActor().getPlayerStats().getHealth()+5);
+        game.getActor().getPlayerStats().setMaxHealth(game.getActor().getPlayerStats().getMaxHealth()+5);
+        game.getActor().getPlayerStats().setMana(game.getActor().getPlayerStats().getMana()+5);
+        game.getActor().getPlayerStats().setMaxMana(game.getActor().getPlayerStats().getMaxMana()+5);
     }
 }

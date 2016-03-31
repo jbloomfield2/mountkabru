@@ -17,10 +17,10 @@ public class ActorControl {
 
     static Stats createPlayerStats() {
         Stats playerStats = new Stats();
-        playerStats.setAttack(3);
+        playerStats.setAttack(8);
         playerStats.setDefence(1);
         playerStats.setMana(15);
-        playerStats.setHealth(19);
+        playerStats.setHealth(20);
         playerStats.setMaxHealth(20);
         playerStats.setLevel(1);
         playerStats.setMaxMana(15);

@@ -11,12 +11,12 @@ import java.util.Objects;
  *
  * @author Andrew
  */
-public class Tavern extends Scene implements Serializable{
+public class Tavern implements Serializable{
     
     private String ownerResponses;
 
     public Tavern() {
-        super();
+        
     }
 
     public String getOwnerResponses() {

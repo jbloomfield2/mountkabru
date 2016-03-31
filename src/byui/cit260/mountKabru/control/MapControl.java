@@ -33,6 +33,10 @@ public class MapControl {
             i++;
         }
         temp.setMonsterType(enemies);
+        
+        temp.getBlacksmith().setArmorBonus(0);
+        temp.getBlacksmith().setWeaponBonus(0);
+        
         return temp;
             
         
@@ -64,6 +68,7 @@ public class MapControl {
                         + " the tavernkeep can offer advice as well as sell a few items"
                         + "and provide work for heroes");
     scenes[SceneType.tavern.ordinal()] = tavern;
+    
     
         Scene thePit = new Scene();
     thePit.setName("The Pit");

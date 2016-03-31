@@ -10,13 +10,13 @@ import java.io.Serializable;
  *
  * @author Andrew
  */
-public class BlackSmith extends Scene implements Serializable{
+public class BlackSmith implements Serializable{
     
     private double armorBonus;
     private double weaponBonus;
 
     public BlackSmith() {
-        super();
+        
     }
 
     public double getArmorBonus() {

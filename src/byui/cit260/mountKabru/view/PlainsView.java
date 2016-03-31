@@ -71,6 +71,8 @@ public abstract class PlainsView extends View {
         enemy = bc.plainsEncounter();
         if (enemy.getName() != null){
             this.console.println("encountered " + enemy.getName() + "!");
+            BattleView battle = new BattleView(enemy);
+            battle.display();
         }
         if (enemy.getName() == null)
             this.console.println("didn't find any monsters!");

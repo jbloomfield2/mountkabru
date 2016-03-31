@@ -21,6 +21,9 @@ public class Locations implements Serializable{
     private EnemyActor[] monsterType = new EnemyActor[16];
     private String areaNumber;
     private Scene[] scenes = new Scene[8];
+    private BlackSmith blacksmith = new BlackSmith();
+    private Tavern tavern = new Tavern();
+    private ThePit thePit = new ThePit();
 
     public Locations() {
     }
@@ -39,6 +42,30 @@ public class Locations implements Serializable{
 
     public void setMonsterType(EnemyActor[] Monstertype) {
         this.monsterType = Monstertype;
+    }
+
+    public BlackSmith getBlacksmith() {
+        return blacksmith;
+    }
+
+    public void setBlacksmith(BlackSmith blacksmith) {
+        this.blacksmith = blacksmith;
+    }
+
+    public Tavern getTavern() {
+        return tavern;
+    }
+
+    public void setTavern(Tavern tavern) {
+        this.tavern = tavern;
+    }
+
+    public ThePit getThePit() {
+        return thePit;
+    }
+
+    public void setThePit(ThePit thePit) {
+        this.thePit = thePit;
     }
 
 
