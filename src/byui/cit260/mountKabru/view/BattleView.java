@@ -79,17 +79,17 @@ public class BattleView extends View{
         Game currentGame = MountKabru.getCurrentGame();
         
         if("Warrior".equals(currentGame.getPlayer().getPlayerClass())){
-            WarriorAbilityView view1 = new WarriorAbilityView();
+            WarriorAbilityView view1 = new WarriorAbilityView(enemyMonster);
             view1.display();
         }
         
         if("Mage".equals(currentGame.getPlayer().getPlayerClass())){
-            MageAbilityView view2 = new MageAbilityView();
+            MageAbilityView view2 = new MageAbilityView(enemyMonster);
             view2.display();
         }
         
         if("Paladin".equals(currentGame.getPlayer().getPlayerClass())){
-            PaladinAbilityView view3 = new PaladinAbilityView();
+            PaladinAbilityView view3 = new PaladinAbilityView(enemyMonster);
             view3.display();
         }
     }
@@ -124,10 +124,6 @@ public class BattleView extends View{
         this.console.println("\ngained " + xp + " experience, "
                 + xpToNextLevel+ " until next level");
         this.console.println("\nYou found "+ shillings+" shillings" );
-    }
-
-    private void defend() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

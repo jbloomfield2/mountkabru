@@ -5,14 +5,27 @@
  */
 package byui.cit260.mountKabru.view;
 
+import byui.cit260.mountKabru.control.BattleControl;
+import byui.cit260.mountKabru.model.AbilityList;
+import byui.cit260.mountKabru.model.EnemyActor;
+import byui.cit260.mountKabru.model.Game;
+import mountkabru.MountKabru;
+
 /**
  *
  * @author Andrew
  */
 public class PaladinAbilityView extends View {
     
-    public PaladinAbilityView(){
-        super("\n========================================" +
+    private static Game game = MountKabru.getCurrentGame();
+    private EnemyActor enemyMonster;
+    
+    public PaladinAbilityView(EnemyActor enemy){
+        super("\nEnemy: "+enemy.getName()+ " health: " +enemy.getStats().getHealth()+ "/" + enemy.getStats().getMaxHealth()
+                +"\n" + game.getPlayer().getName() + ": level " + game.getActor().getPlayerStats().getLevel() + 
+                " health: " + game.getActor().getPlayerStats().getHealth() + "/" + game.getActor().getPlayerStats().getMaxHealth()+
+              
+              "\n========================================" +
               "\n              Abilities!                " +
               "\n  -'F'- Focus                           " +
               "\n  -'D'- Defend                          " +
@@ -20,6 +33,7 @@ public class PaladinAbilityView extends View {
               "\n  -'I'- Intimidate                      " +
               "\n  -'Q'- Return                          " +
               "\n========================================");
+        enemyMonster = enemy;
         } 
 @Override
     public boolean doAction(String choice) {
