@@ -50,9 +50,6 @@ public class BattleView extends View{
                     return true;
                 }
                 break;
-            case "D": // display the help menu
-                this.defend();
-                break;
             case "B":
                 this.ability();
                 break;
@@ -82,19 +79,19 @@ public class BattleView extends View{
     }
     
     private void ability() {
-        Game game = MountKabru.getCurrentGame();
+        Game currentGame = MountKabru.getCurrentGame();
         
-        if(game.getPlayer().getPlayerClass() == "Warrior"){
+        if("Warrior".equals(currentGame.getPlayer().getPlayerClass())){
             WarriorAbilityView view1 = new WarriorAbilityView();
             view1.display();
         }
         
-        if(game.getPlayer().getPlayerClass() == "Mage"){
+        if("Mage".equals(currentGame.getPlayer().getPlayerClass())){
             MageAbilityView view2 = new MageAbilityView();
             view2.display();
         }
         
-        if(game.getPlayer().getPlayerClass() == "Paladin"){
+        if("Paladin".equals(currentGame.getPlayer().getPlayerClass())){
             PaladinAbilityView view3 = new PaladinAbilityView();
             view3.display();
         }
@@ -111,8 +108,7 @@ public class BattleView extends View{
                 +"\n========================================" +
               "\n              Battle!                   " +
               "\n  -'A'- Attack!                         " +
-              "\n  -'D'- Defend!                         " +
-              "\n  -'M'- Abilites                        " +
+              "\n  -'B'- Abilites                        " +
               "\n  -'R'- Run Away!                       " +
               "\n========================================";//update health display
     }
