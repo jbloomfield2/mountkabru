@@ -27,10 +27,10 @@ public class PaladinAbilityView extends View {
         choice = choice.toUpperCase(); // convert choice to upper case
         
         switch (choice){
-            case "F": // create and start a new game
+            case "F": // Focus Ability
                 this.focus();
                 break;
-            case "D": // display the help menu
+            case "D": // Defend Ability
                 this.defend();
                 break;
             case "M":
