@@ -52,6 +52,11 @@ public class BattleView extends View{
                 break;
             case "B":
                 this.ability();
+                this.updateDisplay();
+                if (enemyMonster.getStats().getHealth() < 1){//check if monster is dead
+                    this.victory();
+                    return true;
+                }
                 break;
             case "R":
                 this.runAway();

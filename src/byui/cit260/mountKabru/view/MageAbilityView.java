@@ -70,7 +70,7 @@ public class MageAbilityView extends View{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private EnemyActor fireball() {
+    private void fireball() {
         double damage, mana;
         mana = game.getActor().getPlayerStats().getMana();
             
@@ -81,13 +81,12 @@ public class MageAbilityView extends View{
                 enemyHealth -= damage;
                 enemyMonster.getStats().setHealth(enemyHealth);
                 this.console.println("dealt " + damage + " damage to " + enemyMonster.getName());
-                return enemyMonster;
+                game.getActor().setCurrentMonster(enemyMonster);
             }
             
             if(game.getActor().getPlayerStats().getMana() < AbilityList.Fireball.getResourceCost()){
                 this.console.println("You don't have enough mana.");
-            }
-          return enemyMonster;  
+            } 
     }
 
     private EnemyActor lighting() {

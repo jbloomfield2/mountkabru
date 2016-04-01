@@ -75,7 +75,7 @@ public class WarriorAbilityView extends View{
             
             if(game.getActor().getPlayerStats().getMana() > AbilityList.Slash.getResourceCost()){
                 damage = AbilityList.Slash.getDamage();
-                mana -= 2;
+                mana -= 3;
                 double enemyHealth = enemyMonster.getStats().getHealth();
                 enemyHealth -= damage;
                 enemyMonster.getStats().setHealth(enemyHealth);
@@ -89,8 +89,24 @@ public class WarriorAbilityView extends View{
           return enemyMonster; 
     }
 
-    private void spiralcut() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private EnemyActor spiralcut() {
+        double damage, mana;
+        mana = game.getActor().getPlayerStats().getMana();
+            
+            if(game.getActor().getPlayerStats().getMana() > AbilityList.SpiralCut.getResourceCost()){
+                damage = AbilityList.SpiralCut.getDamage();
+                mana -= 4;
+                double enemyHealth = enemyMonster.getStats().getHealth();
+                enemyHealth -= damage;
+                enemyMonster.getStats().setHealth(enemyHealth);
+                this.console.println("dealt " + damage + " damage to " + enemyMonster.getName());
+                return enemyMonster;
+            }
+            
+            if(game.getActor().getPlayerStats().getMana() < AbilityList.Fireball.getResourceCost()){
+                this.console.println("You don't have enough mana.");
+            }
+          return enemyMonster; 
     }
     
 }
