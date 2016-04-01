@@ -18,7 +18,7 @@ import mountkabru.MountKabru;
 public class BattleView extends View{
     
     private static Game game = MountKabru.getCurrentGame();
-    private EnemyActor enemyMonster;
+    private EnemyActor enemyMonster = game.getActor().getCurrentMonster();
     
     
     public BattleView(EnemyActor enemy){
@@ -32,7 +32,7 @@ public class BattleView extends View{
               "\n  -'M'- Abilites                        " +
               "\n  -'R'- Run Away!                       " +
               "\n========================================");
-        enemyMonster = enemy;
+        game.getActor().setCurrentMonster(enemy);
     
 }
 
