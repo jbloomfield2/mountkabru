@@ -18,7 +18,7 @@ import mountkabru.MountKabru;
 public class BattleView extends View{
     
     private static Game game = MountKabru.getCurrentGame();
-    private EnemyActor enemyMonster;
+    private EnemyActor enemyMonster = game.getActor().getCurrentMonster();
     
     
     public BattleView(EnemyActor enemy){
@@ -28,10 +28,11 @@ public class BattleView extends View{
               "\n========================================" +
               "\n              Battle!                   " +
               "\n  -'A'- Attack!                         " +
-              "\n  -'B'- Abilites                        " +
+              "\n  -'D'- Defend!                         " +
+              "\n  -'M'- Abilites                        " +
               "\n  -'R'- Run Away!                       " +
               "\n========================================");
-        enemyMonster = enemy;
+        game.getActor().setCurrentMonster(enemy);
     
 }
 
@@ -71,7 +72,9 @@ public class BattleView extends View{
         enemyHealth -= damage;
         enemyMonster.getStats().setHealth(enemyHealth);
         this.console.println("dealt " + damage + " damage to " + enemyMonster.getName());
+        this.enemyTurn();
         this.updateDisplay();
+        
         
     }
     
@@ -124,6 +127,21 @@ public class BattleView extends View{
         this.console.println("\ngained " + xp + " experience, "
                 + xpToNextLevel+ " until next level");
         this.console.println("\nYou found "+ shillings+" shillings" );
+    }
+
+    private void enemyTurn() {
+        this.enemyAttack();
+    }
+
+    private void enemyAttack() {
+        BattleControl bc = new BattleControl();
+        double damage,playerHealth;
+        damage = bc.attack(enemyMonster.getStats().getAttack(), 0 , game.getActor().getPlayerStats().getDefence());
+        playerHealth = game.getActor().getPlayerStats().getHealth();
+        playerHealth -= damage;
+        game.getActor().getPlayerStats().setHealth(playerHealth);
+        this.console.println(enemyMonster.getName() + " dealt " + damage + " damage");
+      
     }
     
     

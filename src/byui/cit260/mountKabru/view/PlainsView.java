@@ -76,7 +76,8 @@ public abstract class PlainsView extends View {
     } 
 
     private void usePotion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        usePotionView potion = new usePotionView();
+        potion.display();
     }
 
     private void showGameMenu() {

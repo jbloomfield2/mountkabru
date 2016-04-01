@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -120,7 +121,7 @@ public class BattleControl {
             return monster;
         }
         if (rand < 80){
-            monster = enemies[ActorList.GiantSpider.ordinal()];//encountered giant spider
+            monster = enemies[ActorList.GiantAnt.ordinal()];//encountered giant spider
             return monster;
         }
         if (rand > 80)
