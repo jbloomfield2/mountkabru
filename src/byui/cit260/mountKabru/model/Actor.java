@@ -21,6 +21,7 @@ public class Actor implements Serializable{
     private QuestLog quest;
     private Inventory inventory;
     private Locations locations;
+    private EnemyActor currentMonster = new EnemyActor();
 
     
 
@@ -39,6 +40,14 @@ public class Actor implements Serializable{
 
     public void setPlayerStats(Stats stats) {
         this.playerStats = stats;
+    }
+
+    public EnemyActor getCurrentMonster() {
+        return currentMonster;
+    }
+
+    public void setCurrentMonster(EnemyActor currentMonster) {
+        this.currentMonster = currentMonster;
     }
 
     public ActorList getActorList() {

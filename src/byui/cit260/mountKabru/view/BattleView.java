@@ -18,7 +18,7 @@ import mountkabru.MountKabru;
 public class BattleView extends View{
     
     private static Game game = MountKabru.getCurrentGame();
-    private EnemyActor enemyMonster;
+    private EnemyActor enemyMonster = game.getActor().getCurrentMonster();
     
     
     public BattleView(EnemyActor enemy){
@@ -32,7 +32,7 @@ public class BattleView extends View{
               "\n  -'M'- Abilites                        " +
               "\n  -'R'- Run Away!                       " +
               "\n========================================");
-        enemyMonster = enemy;
+        game.getActor().setCurrentMonster(enemy);
     
 }
 
@@ -102,6 +102,7 @@ public class BattleView extends View{
     }
 
     private void updateDisplay() {
+        enemyMonster = game.getActor().getCurrentMonster();
         this.displayMessage = "\nEnemy: "+enemyMonster.getName()+ " health: " +enemyMonster.getStats().getHealth()+ "/" + enemyMonster.getStats().getMaxHealth()
                 +"\n" + game.getPlayer().getName() + ": level " + game.getActor().getPlayerStats().getLevel() + 
                 " " + game.getActor().getPlayerStats().getHealth() + "/" + game.getActor().getPlayerStats().getMaxHealth()
