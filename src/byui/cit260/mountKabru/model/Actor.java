@@ -21,7 +21,7 @@ public class Actor implements Serializable{
     private QuestLog quest;
     private Inventory inventory;
     private Locations locations;
-    private EnemyActor currentMonster;
+    private EnemyActor currentMonster = new EnemyActor();
 
     
 
