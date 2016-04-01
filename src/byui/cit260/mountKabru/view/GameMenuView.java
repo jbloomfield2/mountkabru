@@ -56,8 +56,7 @@ public class GameMenuView extends View{
             case "H":
                 this.showHelp();
                 break;
-            case "P":
-        {
+            case "P":{
             try {
                 this.printList();
             } catch (IOException ex) {

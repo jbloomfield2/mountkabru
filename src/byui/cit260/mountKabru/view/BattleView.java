@@ -28,6 +28,7 @@ public class BattleView extends View{
               "\n========================================" +
               "\n              Battle!                   " +
               "\n  -'A'- Attack!                         " +
+              "\n  -'D'- Defend!                         " +
               "\n  -'M'- Abilites                        " +
               "\n  -'R'- Run Away!                       " +
               "\n========================================");
@@ -74,7 +75,9 @@ public class BattleView extends View{
         enemyHealth -= damage;
         enemyMonster.getStats().setHealth(enemyHealth);
         this.console.println("dealt " + damage + " damage to " + enemyMonster.getName());
+        this.enemyTurn();
         this.updateDisplay();
+        
         
     }
     
@@ -132,6 +135,21 @@ public class BattleView extends View{
 
     private void defend() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void enemyTurn() {
+        this.enemyAttack();
+    }
+
+    private void enemyAttack() {
+        BattleControl bc = new BattleControl();
+        double damage,playerHealth;
+        damage = bc.attack(enemyMonster.getStats().getAttack(), 0 , game.getActor().getPlayerStats().getDefence());
+        playerHealth = game.getActor().getPlayerStats().getHealth();
+        playerHealth -= damage;
+        game.getActor().getPlayerStats().setHealth(playerHealth);
+        this.console.println(enemyMonster.getName() + " dealt " + damage + " damage");
+      
     }
     
     

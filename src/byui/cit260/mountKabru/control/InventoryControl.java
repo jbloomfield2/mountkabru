@@ -17,6 +17,7 @@ import mountkabru.MountKabru;
  * @author jacob bloomfield
  */
 public class InventoryControl {
+    Game game = MountKabru.getCurrentGame();
     public static Inventory createInventory(){//initialize inventory with starting items
         
         Inventory inv = new Inventory();
@@ -83,4 +84,25 @@ public class InventoryControl {
                         MountKabru.getOutFile().println("\nThanks for your business. Good luck!");
                     }
         }
+
+    public void useHealthPot() throws InventoryControlException {
+        double hp;
+       for(Item i : game.getActor().getInventory().getItems()){
+           if (i.getItemType() == "Health potion\t"){
+               if (i.getQuantity()>0){
+                   hp = game.getActor().getPlayerStats().getHealth();
+                   hp +=10;
+                   if(hp > game.getActor().getPlayerStats().getMaxHealth())
+                       hp = game.getActor().getPlayerStats().getMaxHealth();
+                   game.getActor().getPlayerStats().setHealth(hp);
+                   i.setQuantity(i.getQuantity()-1);
+               }
+               else{
+                   throw new InventoryControlException("you don't have any of that item");
+               }
+                   
+                   
+           }
+       }
+    }
 }
