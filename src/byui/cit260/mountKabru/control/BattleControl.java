@@ -5,6 +5,7 @@
  * and open the template in the editor.
  */
 package byui.cit260.mountKabru.control;
+import byui.cit260.mountKabru.exceptions.BattleControlException;
 import byui.cit260.mountKabru.model.ActorList;
 import byui.cit260.mountKabru.model.EnemyActor;
 import byui.cit260.mountKabru.model.Game;
@@ -124,7 +125,7 @@ public class BattleControl {
             monster = enemies[ActorList.GiantAnt.ordinal()];//encountered giant spider
             return monster;
         }
-        if (rand > 80)
+        if (rand > 79)
             return monster;//20% chance to not encounter anything
 
         return monster;
@@ -152,7 +153,7 @@ public class BattleControl {
             monster = enemies[ActorList.Gator.ordinal()];//encountered giant spider
             return monster;
         }
-        if (rand > 80)
+        if (rand > 79)
             return monster;//20% chance to not encounter anything
 
         return monster;
@@ -180,7 +181,7 @@ public class BattleControl {
             monster = enemies[ActorList.MountainLion.ordinal()];//encountered giant spider
             return monster;
         }
-        if (rand > 80)
+        if (rand > 79)
             return monster;//20% chance to not encounter anything
 
         return monster;
@@ -208,7 +209,7 @@ public class BattleControl {
             monster = enemies[ActorList.Dragon.ordinal()];//encountered giant spider
             return monster;
         }
-        if (rand > 80)
+        if (rand > 79)
             return monster;//20% chance to not encounter anything
 
         return monster;
@@ -226,5 +227,13 @@ public class BattleControl {
         game.getActor().getPlayerStats().setMaxHealth(game.getActor().getPlayerStats().getMaxHealth()+5);
         game.getActor().getPlayerStats().setMana(game.getActor().getPlayerStats().getMana()+5);
         game.getActor().getPlayerStats().setMaxMana(game.getActor().getPlayerStats().getMaxMana()+5);
+    }
+
+    public boolean runAway() throws BattleControlException{
+        Random rnd = new Random();
+        int rand = rnd.nextInt(100);
+        if (rand > 25)//run away has a 25% chance to fail
+            return true;
+        throw new BattleControlException("Failed to run");
     }
 }

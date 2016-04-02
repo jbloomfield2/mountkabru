@@ -43,6 +43,10 @@ public abstract class JungleView extends View {
                 this.searchForMonster();
                 break;
             }
+            case "P":{
+                this.usePotion();
+                break;
+            }
             case "G":{
                 this.showGameMenu();
                 break;
@@ -73,5 +77,10 @@ public abstract class JungleView extends View {
     private void showGameMenu() {
         GameMenuView menu = new GameMenuView();
         menu.display();
+    }
+
+    private void usePotion() {
+        usePotionView potion = new usePotionView();
+        potion.display();
     }
 }

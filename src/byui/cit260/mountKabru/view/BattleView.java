@@ -6,8 +6,11 @@
 package byui.cit260.mountKabru.view;
 
 import byui.cit260.mountKabru.control.BattleControl;
+import byui.cit260.mountKabru.exceptions.BattleControlException;
 import byui.cit260.mountKabru.model.EnemyActor;
 import byui.cit260.mountKabru.model.Game;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import mountkabru.MountKabru;
 
 
@@ -44,7 +47,7 @@ public class BattleView extends View{
         switch (choice){
             case "A":
                 this.attack();
-                if (enemyMonster.getStats().getHealth() < 1){//check if monster is dead
+                if (enemyMonster.getStats().getHealth() < 1 && game.getActor().getPlayerStats().getHealth() > 0){//check if monster is dead
                     this.victory();
                     return true;
                 }
@@ -58,8 +61,8 @@ public class BattleView extends View{
                 }
                 break;
             case "R":
-                this.runAway();
-                break;
+                boolean ran = this.runAway();
+                return ran;
             default:
                 this.console.println("\n*** Invalid selection *** Try again");
                 break;
@@ -77,6 +80,10 @@ public class BattleView extends View{
         enemyMonster.getStats().setHealth(enemyHealth);
         this.console.println("dealt " + damage + " damage to " + enemyMonster.getName());
         this.enemyTurn();
+        if (game.getActor().getPlayerStats().getHealth() < 0)
+            this.fainted();
+        if (game.getActor().getPlayerStats().getHealth() < 9)
+            this.console.println("WARNING Your Health is low! rest at the tavern or drink a potion!");
         this.updateDisplay();
         
         
@@ -101,8 +108,16 @@ public class BattleView extends View{
         }
     }
 
-    private void runAway() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private boolean runAway() {
+        BattleControl bc = new BattleControl();
+        boolean ran;
+        try {
+            ran = bc.runAway();
+        } catch (BattleControlException ex) {
+            this.console.println(ex.getMessage());
+            ran = false;
+        }
+        return ran;
     }
 
     private void updateDisplay() {
@@ -132,6 +147,8 @@ public class BattleView extends View{
         this.console.println("\ngained " + xp + " experience, "
                 + xpToNextLevel+ " until next level");
         this.console.println("\nYou found "+ shillings+" shillings" );
+        game.getActor().setCurrentMonster(new EnemyActor());
+        enemyMonster.getStats().setHealth(enemyMonster.getStats().getMaxHealth());//reset monsters health or they will already be dead next time
     }
 
     private void enemyTurn() {
@@ -147,6 +164,14 @@ public class BattleView extends View{
         game.getActor().getPlayerStats().setHealth(playerHealth);
         this.console.println(enemyMonster.getName() + " dealt " + damage + " damage");
       
+    }
+
+    private void fainted() {
+        this.console.println("you have fainted, you dropped all of your shillings"
+                + "\n and lose all experience toward your next level");
+        game.getActor().getInventory().setShillings(0);
+        game.getActor().getInventory().setXp(0);
+        this.console.println("Get to the tavern and rest Immediately before attempting to battle again");
     }
     
     

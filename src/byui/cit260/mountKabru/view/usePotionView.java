@@ -41,15 +41,15 @@ public class usePotionView extends View {
            }
            case "2":{
                this.useGHealthPot();
-               break;
+               return true;
            }
            case "3":{
                this.useManaPot();
-               break;
+               return true;
            }
            case "4":{
                this.useGManaPot();
-               break;
+               return true;
                
            }
        }
@@ -69,14 +69,32 @@ public class usePotionView extends View {
     }
 
     private void useGHealthPot() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         InventoryControl ic = new InventoryControl();
+        try {
+            ic.useGHealthPot();
+            this.console.println("Healed 25 hitpoints");
+        } catch (InventoryControlException ex) {
+            this.console.println(ex.getMessage());
+        }
     }
 
     private void useManaPot() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        InventoryControl ic = new InventoryControl();
+        try {
+            ic.useManaPot();
+            this.console.println("regained 10 mana");
+        } catch (InventoryControlException ex) {
+            this.console.println(ex.getMessage());
+        }
     }
 
     private void useGManaPot() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+              InventoryControl ic = new InventoryControl();
+        try {
+            ic.useGManaPot();
+            this.console.println("regained 25 mana");
+        } catch (InventoryControlException ex) {
+            this.console.println(ex.getMessage());
+        }
     }
 }

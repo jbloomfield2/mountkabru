@@ -26,7 +26,7 @@ public class BuyManaPotion extends View {
             case "Y": {
             try {
                 // create and start a new game
-                InventoryControl.addPotionToInv();
+                InventoryControl.addManaPotionToInv();
             } catch (InventoryControlException ex) {
                 this.console.println(ex.getMessage());
                         
@@ -40,7 +40,4 @@ public class BuyManaPotion extends View {
     }
    
 
-    private void returnToTavernMenu() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

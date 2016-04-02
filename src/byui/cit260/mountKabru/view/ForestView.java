@@ -51,6 +51,10 @@ public abstract class ForestView extends View {
                 this.showGameMenu();
                 break;
             }
+            case "P":{
+                this.usePotion();
+                break;
+            }
             default:{
                 this.console.println("\n*** Invalid selection *** Try again");
                 break;
@@ -76,5 +80,10 @@ public abstract class ForestView extends View {
     private void showGameMenu() {
         GameMenuView menu = new GameMenuView();
         menu.display();
+    }
+
+    private void usePotion() {
+        usePotionView potion = new usePotionView();
+        potion.display();
     }
 }

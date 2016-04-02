@@ -45,6 +45,10 @@ public abstract class PlainsView extends View {
                 this.searchForMonster();
                 break;
             }
+            case "P":{
+                this.usePotion();
+                break;
+            }
             case "G":{
                 this.showGameMenu();
                 break;

@@ -17,7 +17,7 @@ import mountkabru.MountKabru;
  * @author jacob bloomfield
  */
 public class InventoryControl {
-    Game game = MountKabru.getCurrentGame();
+   static Game game = MountKabru.getCurrentGame();
     public static Inventory createInventory(){//initialize inventory with starting items
         
         Inventory inv = new Inventory();
@@ -28,7 +28,7 @@ public class InventoryControl {
         inv.getItems().get(0).setQuantity(3);
         inv.getItems().get(2).setQuantity(1);
         inv.getItems().get(1).setQuantity(4);
-        inv.setShillings(10);
+        inv.setShillings(50);
         inv.setXp(0);
         inv.setXpToNextLevel(250);
 
@@ -73,7 +73,7 @@ public class InventoryControl {
     
     public static void addPotionToInv() throws InventoryControlException { 
         
-                Inventory inv = new Inventory();
+                Inventory inv = game.getActor().getInventory();
                         
                     if (inv.getShillings() < 50){
                         throw new InventoryControlException("\nYou only have "
@@ -81,9 +81,30 @@ public class InventoryControl {
                     }
                                
                     if (inv.getShillings() > 50){
-                        MountKabru.getOutFile().println("\nThanks for your business. Good luck!");
+                        for(Item i : game.getActor().getInventory().getItems()){
+                            if (i.getItemType() == "Health potion\t"){
+                               i.setQuantity(i.getQuantity()+1);
+                            }
+                            }
                     }
         }
+
+    public static void addManaPotionToInv() throws InventoryControlException{
+        Inventory inv = game.getActor().getInventory();
+                        
+                    if (inv.getShillings() < 50){
+                        throw new InventoryControlException("\nYou only have "
+                                                            + inv.getShillings() + ". Come back when you have enough.");
+                    }
+                               
+                    if (inv.getShillings() > 50){
+                        for(Item i : game.getActor().getInventory().getItems()){
+                            if (i.getItemType() == "Mana potion\t"){
+                               i.setQuantity(i.getQuantity()+1);
+                            }
+                            }
+                    }
+    }
 
     public void useHealthPot() throws InventoryControlException {
         double hp;
@@ -95,6 +116,69 @@ public class InventoryControl {
                    if(hp > game.getActor().getPlayerStats().getMaxHealth())
                        hp = game.getActor().getPlayerStats().getMaxHealth();
                    game.getActor().getPlayerStats().setHealth(hp);
+                   i.setQuantity(i.getQuantity()-1);
+               }
+               else{
+                   throw new InventoryControlException("you don't have any of that item");
+               }
+                   
+                   
+           }
+       }
+    }
+
+    public void useGHealthPot () throws InventoryControlException{
+         double hp;
+       for(Item i : game.getActor().getInventory().getItems()){
+           if (i.getItemType() == "Greater Health potion"){
+               if (i.getQuantity()>0){
+                   hp = game.getActor().getPlayerStats().getHealth();
+                   hp +=25;
+                   if(hp > game.getActor().getPlayerStats().getMaxHealth())
+                       hp = game.getActor().getPlayerStats().getMaxHealth();
+                   game.getActor().getPlayerStats().setHealth(hp);
+                   i.setQuantity(i.getQuantity()-1);
+               }
+               else{
+                   throw new InventoryControlException("you don't have any of that item");
+               }
+                   
+                   
+           }
+       }
+    }
+
+    public void useManaPot() throws InventoryControlException{
+       double mana;
+       for(Item i : game.getActor().getInventory().getItems()){
+           if (i.getItemType() == "Mana potion\t"){
+               if (i.getQuantity()>0){
+                   mana = game.getActor().getPlayerStats().getMana();
+                   mana +=10;
+                   if(mana > game.getActor().getPlayerStats().getMaxMana())
+                       mana = game.getActor().getPlayerStats().getMaxMana();
+                   game.getActor().getPlayerStats().setMana(mana);
+                   i.setQuantity(i.getQuantity()-1);
+               }
+               else{
+                   throw new InventoryControlException("you don't have any of that item");
+               }
+                   
+                   
+           }
+       }
+    }
+
+    public void useGManaPot() throws InventoryControlException{
+       double mana;
+       for(Item i : game.getActor().getInventory().getItems()){
+           if (i.getItemType() == "Greater mana potion"){
+               if (i.getQuantity()>0){
+                   mana = game.getActor().getPlayerStats().getMana();
+                   mana +=25;
+                   if(mana > game.getActor().getPlayerStats().getMaxMana())
+                       mana = game.getActor().getPlayerStats().getMaxMana();
+                   game.getActor().getPlayerStats().setMana(mana);
                    i.setQuantity(i.getQuantity()-1);
                }
                else{
