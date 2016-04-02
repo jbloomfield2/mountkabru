@@ -57,6 +57,7 @@ public class GameControl {
        
        Locations locations = new Locations();
        locations = MapControl.createMap();
+       locations.getThePit().setTrainingLimit(3);
        game.setLocations(locations);
        
        QuestLog quests = new QuestLog();

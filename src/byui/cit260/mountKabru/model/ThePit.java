@@ -16,6 +16,7 @@ public class ThePit implements Serializable{
     
     private String title;
     private double trainingLimit;
+    private double timesTrained;
 
     public ThePit() {
         
@@ -27,6 +28,14 @@ public class ThePit implements Serializable{
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public double getTimesTrained() {
+        return timesTrained;
+    }
+
+    public void setTimesTrained(double timesTrained) {
+        this.timesTrained = timesTrained;
     }
 
     public double getTrainingLimit() {

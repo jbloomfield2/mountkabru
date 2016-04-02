@@ -24,7 +24,7 @@ public class BattleControl {
         xp += gainedXp;
         game.getActor().getInventory().setXp(xp);
         if (game.getActor().getInventory().getXp() >= game.getActor().getInventory().getXpToNextLevel())
-           BattleControl.levelUp();
+           StatsControl.levelUp();
         
         double shillings,gainedShillings;
         shillings = game.getActor().getInventory().getShillings();
@@ -215,19 +215,7 @@ public class BattleControl {
         return monster;
     }
 
-    private static void levelUp() {
-        game.getActor().getInventory().setXp(0);//reset experience counter
-        double nextLevel = game.getActor().getInventory().getXpToNextLevel() + 50;
-        game.getActor().getInventory().setXpToNextLevel(nextLevel);
-        
-        game.getActor().getPlayerStats().setLevel(game.getActor().getPlayerStats().getLevel()+1);
-        game.getActor().getPlayerStats().setAttack(game.getActor().getPlayerStats().getAttack()+2);
-        game.getActor().getPlayerStats().setDefence(game.getActor().getPlayerStats().getDefence()+1);
-        game.getActor().getPlayerStats().setHealth(game.getActor().getPlayerStats().getHealth()+5);
-        game.getActor().getPlayerStats().setMaxHealth(game.getActor().getPlayerStats().getMaxHealth()+5);
-        game.getActor().getPlayerStats().setMana(game.getActor().getPlayerStats().getMana()+5);
-        game.getActor().getPlayerStats().setMaxMana(game.getActor().getPlayerStats().getMaxMana()+5);
-    }
+    
 
     public boolean runAway() throws BattleControlException{
         Random rnd = new Random();
