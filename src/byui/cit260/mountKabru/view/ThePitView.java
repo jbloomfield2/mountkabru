@@ -5,12 +5,15 @@
  */
 package byui.cit260.mountKabru.view;
 
+import byui.cit260.mountKabru.model.Game;
+import mountkabru.MountKabru;
+
 /**
  *
  * @author jacob bloomfield
  */
 public class ThePitView extends View {
-    
+    Game game = MountKabru.getCurrentGame();
     public ThePitView(){
         super("\n"
               + "\n----------------------------------------"
@@ -20,6 +23,7 @@ public class ThePitView extends View {
               + "\nH - Help" 
               + "\nQ - Return to town" 
               + "\n----------------------------------------");
+        this.console.println("You may train " + game.getLocations().getThePit().getTrainingLimit() + " more times this level");
     }
     
     @Override
@@ -28,11 +32,16 @@ public class ThePitView extends View {
 
         switch (value){
             case "T":
-                this.console.println("Train function called");
+                if(game.getLocations().getThePit().getTrainingLimit() > 0){
+                    this.train();
+                    this.console.println("You may train " + game.getLocations().getThePit().getTrainingLimit() + " more times this level");
+                }
+                else
+                    this.console.println("You must level up before you can train more");
                 break;
             case "H":
                 HelpMenuView pitHelp = new HelpMenuView();
-                pitHelp.displayPitHelp();
+                pitHelp.display();
                 break;
 
             default:
@@ -42,5 +51,10 @@ public class ThePitView extends View {
         
         return false;
         }
+
+    private void train() {
+        TrainView train = new TrainView();
+        train.display();
+    }
     
 }
