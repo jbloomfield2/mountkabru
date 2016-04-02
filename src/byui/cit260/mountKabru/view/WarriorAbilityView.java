@@ -49,10 +49,10 @@ public class WarriorAbilityView extends View{
                 break;
             case "S":
                 this.slash();
-                break;
+                return true;
             case "C":
                 this.spiralcut();
-                break;
+                return true;
             default:
                 this.console.println("\n*** Invalid selection *** Try again");
                 break;
@@ -69,7 +69,7 @@ public class WarriorAbilityView extends View{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private EnemyActor slash() {
+    private void slash() {
         double damage, mana;
         mana = game.getActor().getPlayerStats().getMana();
             
@@ -80,16 +80,16 @@ public class WarriorAbilityView extends View{
                 enemyHealth -= damage;
                 enemyMonster.getStats().setHealth(enemyHealth);
                 this.console.println("dealt " + damage + " damage to " + enemyMonster.getName());
-                return enemyMonster;
+                game.getActor().setCurrentMonster(enemyMonster);
             }
             
             if(game.getActor().getPlayerStats().getMana() < AbilityList.Fireball.getResourceCost()){
                 this.console.println("You don't have enough mana.");
             }
-          return enemyMonster; 
+           
     }
 
-    private EnemyActor spiralcut() {
+    private void spiralcut() {
         double damage, mana;
         mana = game.getActor().getPlayerStats().getMana();
             
@@ -100,13 +100,12 @@ public class WarriorAbilityView extends View{
                 enemyHealth -= damage;
                 enemyMonster.getStats().setHealth(enemyHealth);
                 this.console.println("dealt " + damage + " damage to " + enemyMonster.getName());
-                return enemyMonster;
+                game.getActor().setCurrentMonster(enemyMonster);
             }
             
             if(game.getActor().getPlayerStats().getMana() < AbilityList.Fireball.getResourceCost()){
                 this.console.println("You don't have enough mana.");
-            }
-          return enemyMonster; 
+            } 
     }
     
 }

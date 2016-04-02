@@ -100,6 +100,7 @@ public class MageAbilityView extends View{
                 enemyHealth -= damage;
                 enemyMonster.getStats().setHealth(enemyHealth);
                 this.console.println("dealt " + damage + " damage to " + enemyMonster.getName());
+                game.getActor().setCurrentMonster(enemyMonster);
             }
             
             if(game.getActor().getPlayerStats().getMana() < AbilityList.Fireball.getResourceCost()){

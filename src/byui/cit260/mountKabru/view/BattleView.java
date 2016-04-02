@@ -28,8 +28,7 @@ public class BattleView extends View{
               "\n========================================" +
               "\n              Battle!                   " +
               "\n  -'A'- Attack!                         " +
-              "\n  -'D'- Defend!                         " +
-              "\n  -'M'- Abilites                        " +
+              "\n  -'B'- Abilites                        " +
               "\n  -'R'- Run Away!                       " +
               "\n========================================");
         game.getActor().setCurrentMonster(enemy);

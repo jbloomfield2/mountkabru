@@ -129,6 +129,90 @@ public class BattleControl {
 
         return monster;
     }
+    
+    public EnemyActor JungleEncounter(){
+        Random rnd = new Random();
+        int rand = rnd.nextInt(100);//get a random number
+        EnemyActor[] enemies = game.getLocations().getMonsterType();//retrieve list of monsters, only 0-3 can be found in plains
+        EnemyActor monster = new EnemyActor();//this will be the monster encountered
+
+        if (rand < 25){
+            monster = enemies[ActorList.GiantSpider.ordinal()];//encountered goblin
+            return monster;
+        }
+        if (rand < 45){
+            monster = enemies[ActorList.Snake.ordinal()];//encountered wolf
+            return monster;
+        }
+        if (rand < 65){
+            monster = enemies[ActorList.BlackPanther.ordinal()];//encountered kobold
+            return monster;
+        }
+        if (rand < 80){
+            monster = enemies[ActorList.Gator.ordinal()];//encountered giant spider
+            return monster;
+        }
+        if (rand > 80)
+            return monster;//20% chance to not encounter anything
+
+        return monster;
+    }
+    
+    public EnemyActor ForestEncounter(){
+        Random rnd = new Random();
+        int rand = rnd.nextInt(100);//get a random number
+        EnemyActor[] enemies = game.getLocations().getMonsterType();//retrieve list of monsters, only 0-3 can be found in plains
+        EnemyActor monster = new EnemyActor();//this will be the monster encountered
+
+        if (rand < 25){
+            monster = enemies[ActorList.Centaur.ordinal()];//encountered goblin
+            return monster;
+        }
+        if (rand < 45){
+            monster = enemies[ActorList.Ent.ordinal()];//encountered wolf
+            return monster;
+        }
+        if (rand < 65){
+            monster = enemies[ActorList.Werewolf.ordinal()];//encountered kobold
+            return monster;
+        }
+        if (rand < 80){
+            monster = enemies[ActorList.MountainLion.ordinal()];//encountered giant spider
+            return monster;
+        }
+        if (rand > 80)
+            return monster;//20% chance to not encounter anything
+
+        return monster;
+    }
+    
+    public EnemyActor MountainEncounter(){
+        Random rnd = new Random();
+        int rand = rnd.nextInt(100);//get a random number
+        EnemyActor[] enemies = game.getLocations().getMonsterType();//retrieve list of monsters, only 0-3 can be found in plains
+        EnemyActor monster = new EnemyActor();//this will be the monster encountered
+
+        if (rand < 25){
+            monster = enemies[ActorList.MountainTroll.ordinal()];//encountered goblin
+            return monster;
+        }
+        if (rand < 45){
+            monster = enemies[ActorList.Giant.ordinal()];//encountered wolf
+            return monster;
+        }
+        if (rand < 65){
+            monster = enemies[ActorList.Griffin.ordinal()];//encountered kobold
+            return monster;
+        }
+        if (rand < 80){
+            monster = enemies[ActorList.Dragon.ordinal()];//encountered giant spider
+            return monster;
+        }
+        if (rand > 80)
+            return monster;//20% chance to not encounter anything
+
+        return monster;
+    }
 
     private static void levelUp() {
         game.getActor().getInventory().setXp(0);//reset experience counter

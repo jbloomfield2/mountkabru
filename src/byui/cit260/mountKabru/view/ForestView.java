@@ -5,6 +5,9 @@
  */
 package byui.cit260.mountKabru.view;
 
+import byui.cit260.mountKabru.control.BattleControl;
+import byui.cit260.mountKabru.model.EnemyActor;
+
 /**
  *
  * @author Andrew
@@ -29,7 +32,6 @@ public abstract class ForestView extends View {
                 + "\nThe Dark Forest"
                 + "\n======================================="
                 + "\nM-Search for Monster"
-                + "\nP-Use Potion"
                 + "\nG-Game Menu"
                 + "\nQ-return to previous menu"
                 + "\n=======================================");
@@ -43,10 +45,6 @@ public abstract class ForestView extends View {
         switch(choice){
             case "S":{
                 this.searchForMonster();
-                break;
-            }
-            case "P":{
-                this.usePotion();
                 break;
             }
             case "G":{
@@ -63,12 +61,17 @@ public abstract class ForestView extends View {
 }
 
     private void searchForMonster() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        BattleControl bc = new BattleControl();
+        EnemyActor enemy = new EnemyActor();
+        enemy = bc.ForestEncounter();
+        if (enemy.getName() != null){
+            this.console.println("encountered " + enemy.getName() + "!");
+            BattleView battle = new BattleView(enemy);
+            battle.display();
+        }
+        if (enemy.getName() == null)
+            this.console.println("didn't find any monsters!");}
 
-    private void usePotion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     private void showGameMenu() {
         GameMenuView menu = new GameMenuView();
