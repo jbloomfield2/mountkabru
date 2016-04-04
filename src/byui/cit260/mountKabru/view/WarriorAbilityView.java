@@ -62,11 +62,25 @@ public class WarriorAbilityView extends View{
     }      
 
     private void focus() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        double attack;
+        attack = 3;
+        double playerAttack;
+        playerAttack = game.getActor().getPlayerStats().getAttack();
+        playerAttack += attack;
+        game.getActor().getPlayerStats().setHealth(playerAttack);
+        this.console.println("You gained " + attack + " temporary defense");
     }
 
     private void defend() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        double defense;
+        defense = 10;
+        BattleControl bc = new BattleControl();
+        double damage,playerDefense;
+        playerDefense = game.getActor().getPlayerStats().getHealth();
+        playerDefense += defense;
+        game.getActor().getPlayerStats().setHealth(playerDefense);
+        this.console.println("You gained " + defense + " temporary defense");
+        
     }
 
     private void slash() {
