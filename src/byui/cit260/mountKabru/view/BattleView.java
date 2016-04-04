@@ -6,9 +6,12 @@
 package byui.cit260.mountKabru.view;
 
 import byui.cit260.mountKabru.control.BattleControl;
+import byui.cit260.mountKabru.control.QuestControl;
 import byui.cit260.mountKabru.exceptions.BattleControlException;
+import byui.cit260.mountKabru.model.ActorList;
 import byui.cit260.mountKabru.model.EnemyActor;
 import byui.cit260.mountKabru.model.Game;
+import byui.cit260.mountKabru.model.QuestList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mountkabru.MountKabru;
@@ -149,6 +152,12 @@ public class BattleView extends View{
         this.console.println("\nYou found "+ shillings+" shillings" );
         game.getActor().setCurrentMonster(new EnemyActor());
         enemyMonster.getStats().setHealth(enemyMonster.getStats().getMaxHealth());//reset monsters health or they will already be dead next time
+        QuestControl qc = new QuestControl();
+        //update quests progress
+        qc.updateQuest(QuestList.Win20Battles.getQUESTDETAILS());
+        if (enemyMonster.getName() == ActorList.GiantSpider.getName())
+            qc.updateQuest(QuestList.KillSpiders.getQUESTDETAILS());
+            
     }
 
     private void enemyTurn() {

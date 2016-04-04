@@ -6,6 +6,7 @@
 package byui.cit260.mountKabru.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 /**
  *
@@ -14,6 +15,7 @@ import java.util.Objects;
 public class Tavern implements Serializable{
     
     private String ownerResponses;
+    ArrayList<QuestLog> quests = new ArrayList<>();
 
     public Tavern() {
         

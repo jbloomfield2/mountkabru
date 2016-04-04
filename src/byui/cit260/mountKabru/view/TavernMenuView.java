@@ -89,11 +89,9 @@ public class TavernMenuView extends View{
     }
 
     private void availableQuests() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        QuestView qv = new QuestView();
+        qv.display();
     }
 
-    private void returnToTown() {
-        TownMenuView town = new TownMenuView();
-        town.display();
-    }
+
 }

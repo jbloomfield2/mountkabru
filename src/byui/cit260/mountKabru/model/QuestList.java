@@ -10,25 +10,25 @@ import java.util.Objects;
  *
  * @author jacob bloomfield
  */
-public enum Quest implements Serializable {
+public enum QuestList implements Serializable {
     
-    KillSpiders("kill 5 spiders",0,100,200),
-    UpgradeArmor("Upgrade your Armor",0,100,200),
-    UpgradeWeapon("Upgrade your Weapon",0,100,200),
-    Win20Battles("Win 20 battles",0,100,200),
-    UseAnAbility("Use an ability 5 times in battle",0,100,200);
+    KillSpiders("kill 5 spiders",5,100,200),
+    UpgradeArmor("Upgrade your Armor",1,100,200),
+    UpgradeWeapon("Upgrade your Weapon",1,100,200),
+    Win20Battles("Win 20 battles",20,100,200),
+    UseAnAbility("Use an ability 5 times in battle",5,100,200);
     
     
     private final String QUESTDETAILS;
-    private String progress;
     private final double REWARDSHILLINGS;
     private final double REWARDXP;
+    private final int objective;
 
-     Quest(String questDetails, double progress, double rewardShillings, double rewardXp) {
+     QuestList(String questDetails,int objective, double rewardShillings, double rewardXp) {
          this.QUESTDETAILS = questDetails;
-         this.progress = this.progress;
          this.REWARDSHILLINGS = rewardShillings;
          this.REWARDXP = rewardXp;
+         this.objective = objective;
     }
 
     public String getQUESTDETAILS() {
@@ -39,6 +39,10 @@ public enum Quest implements Serializable {
         return REWARDSHILLINGS;
     }
 
+    public int getObjective() {
+        return objective;
+    }
+
     public double getREWARDXP() {
         return REWARDXP;
     }
@@ -46,17 +50,10 @@ public enum Quest implements Serializable {
     
     
 
-    public String getProgress() {
-        return progress;
-    }
-
-    public void setProgress(String progress) {
-        this.progress = progress;
-    }
 
     @Override
     public String toString() {
-        return "Quest{" + "QUESTDETAILS=" + QUESTDETAILS + ", progress=" + progress + ", REWARDSHILLINGS=" + REWARDSHILLINGS + ", REWARDXP=" + REWARDXP + '}';
+        return "Quest{" + "QUESTDETAILS=" + QUESTDETAILS + ", progress="  + ", REWARDSHILLINGS=" + REWARDSHILLINGS + ", REWARDXP=" + REWARDXP + '}';
     }
 
     

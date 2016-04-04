@@ -5,6 +5,7 @@
  */
 package byui.cit260.mountKabru.model;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 /**
@@ -18,20 +19,22 @@ public class Actor implements Serializable{
 
     private ActorList actorList;
     private Stats playerStats;
-    private QuestLog quest;
+    private ArrayList<QuestLog> quest = new ArrayList<>();
     private Inventory inventory;
     private Locations locations;
     private EnemyActor currentMonster = new EnemyActor();
 
-    
-
-    public QuestLog getQuest() {
+    public ArrayList<QuestLog> getQuest() {
         return quest;
     }
 
-    public void setQuest(QuestLog quest) {
+    public void setQuest(ArrayList<QuestLog> quest) {
         this.quest = quest;
     }
+
+    
+
+   
 
 
     public Stats getPlayerStats() {

@@ -12,6 +12,7 @@ import byui.cit260.mountKabru.model.Inventory;
 import byui.cit260.mountKabru.model.Item;
 import byui.cit260.mountKabru.model.Locations;
 import byui.cit260.mountKabru.model.Player;
+import byui.cit260.mountKabru.model.QuestList;
 import byui.cit260.mountKabru.model.QuestLog;
 import byui.cit260.mountKabru.model.Stats;
 import java.io.FileInputStream;
@@ -47,6 +48,9 @@ public class GameControl {
        
        game.setPlayer(player);//set player
        Actor actor = new Actor();//create and initalize all other model objects
+       ArrayList<QuestLog> quests = new ArrayList<>();
+       quests = QuestControl.createQuests();
+       actor.setQuest(quests);
        game.setActor(actor);
        game.setDay(1);
        
@@ -60,8 +64,6 @@ public class GameControl {
        locations.getThePit().setTrainingLimit(3);
        game.setLocations(locations);
        
-       QuestLog quests = new QuestLog();
-       game.getActor().setQuest(quests);
        
        Stats playerStats = new Stats();
        playerStats = ActorControl.createPlayerStats();
