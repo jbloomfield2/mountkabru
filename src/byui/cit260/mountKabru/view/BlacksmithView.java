@@ -43,11 +43,14 @@ public class BlacksmithView extends View {
     }
 
     private void addArmorBonus() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArmorBonusView ab = new ArmorBonusView();
+        ab.display();
+        
     }
 
     private void addWeaponBonus() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        WeaponBonusView wb = new WeaponBonusView();
+        wb.display();
     }
 
 

@@ -62,18 +62,58 @@ public class PaladinAbilityView extends View {
     }    
 
     private void focus() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        double attack;
+        attack = 3;
+        double playerAttack;
+        playerAttack = game.getActor().getPlayerStats().getAttack();
+        playerAttack += attack;
+        game.getActor().getPlayerStats().setHealth(playerAttack);
+        this.console.println("You gained " + attack + " temporary defense");
     }
+
 
     private void defend() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        double defense;
+        defense = 10;
+        double playerDefense;
+        playerDefense = game.getActor().getPlayerStats().getDefence();
+        playerDefense += defense;
+        game.getActor().getPlayerStats().setHealth(playerDefense);
+        this.console.println("You gained " + defense + " temporary defense");}
 
     private void minorheal() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        double heal, mana;
+        mana = game.getActor().getPlayerStats().getMana();
+            
+            if(game.getActor().getPlayerStats().getMana() > AbilityList.MinorHeal.getResourceCost()){
+                mana -= 2;
+                double playerHealth = enemyMonster.getStats().getHealth();
+                playerHealth -= 7;
+                this.console.println("You healed 7 health.");
+                game.getActor().setCurrentMonster(enemyMonster);
+            }
+            
+            if(game.getActor().getPlayerStats().getMana() < AbilityList.Fireball.getResourceCost()){
+                this.console.println("You don't have enough mana.");
+            }
     }
 
     private void intimidate() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        double damage, mana;
+        mana = game.getActor().getPlayerStats().getMana();
+            
+            if(game.getActor().getPlayerStats().getMana() > AbilityList.Intimidate.getResourceCost()){
+                damage = AbilityList.Intimidate.getDamage();
+                mana -= 3;
+                double enemyAttack = enemyMonster.getStats().getAttack();
+                enemyAttack -= 2;
+                enemyMonster.getStats().setHealth(enemyAttack);
+                this.console.println("You Intimidated " + enemyMonster.getName() + ". The monsters attack fell 2 points");
+                game.getActor().setCurrentMonster(enemyMonster);
+            }
+            
+            if(game.getActor().getPlayerStats().getMana() < AbilityList.Fireball.getResourceCost()){
+                this.console.println("You don't have enough mana.");
+            } 
     }
 }
