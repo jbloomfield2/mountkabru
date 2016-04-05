@@ -6,9 +6,11 @@
 package byui.cit260.mountKabru.view;
 
 import byui.cit260.mountKabru.control.BattleControl;
+import byui.cit260.mountKabru.control.QuestControl;
 import byui.cit260.mountKabru.model.AbilityList;
 import byui.cit260.mountKabru.model.EnemyActor;
 import byui.cit260.mountKabru.model.Game;
+import byui.cit260.mountKabru.model.QuestList;
 import mountkabru.MountKabru;
 
 /**
@@ -19,6 +21,7 @@ public class WarriorAbilityView extends View{
     
     private static Game game = MountKabru.getCurrentGame();
     private EnemyActor enemyMonster;
+    QuestControl qc = new QuestControl();
     
     public WarriorAbilityView(EnemyActor enemy){
             super("\nEnemy: "+enemy.getName()+ " health: " +enemy.getStats().getHealth()+ "/" + enemy.getStats().getMaxHealth()
@@ -43,15 +46,19 @@ public class WarriorAbilityView extends View{
         switch (choice){
             case "F": // Focus Ability
                 this.focus();
-                break;
+                qc.updateQuest(QuestList.UseAnAbility.getQUESTDETAILS());
+                return true;
             case "D": // Defend Ability
                 this.defend();
-                break;
+                qc.updateQuest(QuestList.UseAnAbility.getQUESTDETAILS());
+                return true;
             case "S":
                 this.slash();
+                qc.updateQuest(QuestList.UseAnAbility.getQUESTDETAILS());
                 return true;
             case "C":
                 this.spiralcut();
+                qc.updateQuest(QuestList.UseAnAbility.getQUESTDETAILS());
                 return true;
             default:
                 this.console.println("\n*** Invalid selection *** Try again");
@@ -97,7 +104,7 @@ public class WarriorAbilityView extends View{
                 game.getActor().setCurrentMonster(enemyMonster);
             }
             
-            if(game.getActor().getPlayerStats().getMana() < AbilityList.Fireball.getResourceCost()){
+            if(game.getActor().getPlayerStats().getMana() < AbilityList.Slash.getResourceCost()){
                 this.console.println("You don't have enough mana.");
             }
            
@@ -117,7 +124,7 @@ public class WarriorAbilityView extends View{
                 game.getActor().setCurrentMonster(enemyMonster);
             }
             
-            if(game.getActor().getPlayerStats().getMana() < AbilityList.Fireball.getResourceCost()){
+            if(game.getActor().getPlayerStats().getMana() < AbilityList.SpiralCut.getResourceCost()){
                 this.console.println("You don't have enough mana.");
             } 
     }

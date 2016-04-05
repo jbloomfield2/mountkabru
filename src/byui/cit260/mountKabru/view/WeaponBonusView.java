@@ -29,12 +29,14 @@ public class WeaponBonusView extends View {
                 double attack;
                 attack = 2;
                 double playerAttack;
-                playerAttack = game.getActor().getPlayerStats().getAttack();
+                playerAttack = game.getLocations().getBlacksmith().getWeaponBonus();
                 playerAttack += attack;
-                game.getActor().getPlayerStats().setDefence(playerAttack);
+                game.getLocations().getBlacksmith().setWeaponBonus(playerAttack);
                 this.console.println("\nThanks for your business. Good luck!");
+                game.getActor().getInventory().setShillings(game.getActor().getInventory().getShillings()-100);
+                
             }
-                break;
+                return true;
             case "N": // return to Blacksmith
                 return true;
             }

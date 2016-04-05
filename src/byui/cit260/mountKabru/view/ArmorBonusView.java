@@ -35,12 +35,13 @@ public class ArmorBonusView extends View {
                 double defense;
                 defense = 2;
                 double playerDefense;
-                playerDefense = game.getActor().getPlayerStats().getDefence();
+                playerDefense = game.getLocations().getBlacksmith().getArmorBonus();
                 playerDefense += defense;
-                game.getActor().getPlayerStats().setDefence(playerDefense);
+                game.getLocations().getBlacksmith().setArmorBonus(playerDefense);
+                game.getActor().getInventory().setShillings(game.getActor().getInventory().getShillings()-100);
                 this.console.println("\nThanks for your business. Good luck!");
             }
-                break;
+               return true;
             case "N": // return to Blacksmith
                 return true;
             }

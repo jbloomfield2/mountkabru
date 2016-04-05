@@ -5,11 +5,18 @@
  */
 package byui.cit260.mountKabru.view;
 
+import byui.cit260.mountKabru.control.QuestControl;
+import byui.cit260.mountKabru.model.Game;
+import byui.cit260.mountKabru.model.QuestList;
+import mountkabru.MountKabru;
+
 /**
  *
  * @author Andrew
  */
 public class BlacksmithView extends View {
+    
+    Game game = MountKabru.getCurrentGame();
     
     public BlacksmithView(){
         super("\n************************************************************\n" +
@@ -29,11 +36,19 @@ public class BlacksmithView extends View {
         
         switch (choice){
             case "A": // create and start a new game
-                this.addArmorBonus();
+                if (game.getActor().getInventory().getShillings() >= 100)
+                    this.addArmorBonus();
+                else
+                    this.console.println("Not enough Shillings");
                 break;
+                
             case "W": // display the help menu
-                this.addWeaponBonus();
+                if (game.getActor().getInventory().getShillings() >= 100)
+                    this.addWeaponBonus();
+                else
+                    this.console.println("Not enough shillings");
                 break;
+                
             default:
                 this.console.println("\n*** Invalid selection *** Try again");
                 break;
@@ -45,12 +60,20 @@ public class BlacksmithView extends View {
     private void addArmorBonus() {
         ArmorBonusView ab = new ArmorBonusView();
         ab.display();
+        if (game.getLocations().getBlacksmith().getArmorBonus() == 2){
+            QuestControl qc = new QuestControl();
+            qc.updateQuest(QuestList.UpgradeArmor.getQUESTDETAILS());
+        }
         
     }
 
     private void addWeaponBonus() {
         WeaponBonusView wb = new WeaponBonusView();
         wb.display();
+        if (game.getLocations().getBlacksmith().getWeaponBonus() == 2){
+            QuestControl qc = new QuestControl();
+            qc.updateQuest(QuestList.UpgradeWeapon.getQUESTDETAILS());
+        }
     }
 
 

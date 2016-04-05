@@ -6,9 +6,11 @@
 package byui.cit260.mountKabru.view;
 
 import byui.cit260.mountKabru.control.BattleControl;
+import byui.cit260.mountKabru.control.QuestControl;
 import byui.cit260.mountKabru.model.AbilityList;
 import byui.cit260.mountKabru.model.EnemyActor;
 import byui.cit260.mountKabru.model.Game;
+import byui.cit260.mountKabru.model.QuestList;
 import mountkabru.MountKabru;
 
 /**
@@ -19,6 +21,7 @@ public class PaladinAbilityView extends View {
     
     private static Game game = MountKabru.getCurrentGame();
     private EnemyActor enemyMonster;
+    QuestControl qc = new QuestControl();
     
     public PaladinAbilityView(EnemyActor enemy){
         super("\nEnemy: "+enemy.getName()+ " health: " +enemy.getStats().getHealth()+ "/" + enemy.getStats().getMaxHealth()
@@ -43,16 +46,20 @@ public class PaladinAbilityView extends View {
         switch (choice){
             case "F": // Focus Ability
                 this.focus();
-                break;
+                qc.updateQuest(QuestList.UseAnAbility.getQUESTDETAILS());
+                return true;
             case "D": // Defend Ability
                 this.defend();
-                break;
+                qc.updateQuest(QuestList.UseAnAbility.getQUESTDETAILS());
+                return true;
             case "M":
                 this.minorheal();
-                break;
+                qc.updateQuest(QuestList.UseAnAbility.getQUESTDETAILS());
+                return true;
             case "I":
                 this.intimidate();
-                break;
+                qc.updateQuest(QuestList.UseAnAbility.getQUESTDETAILS());
+                return true;
             default:
                 this.console.println("\n*** Invalid selection *** Try again");
                 break;
@@ -93,7 +100,7 @@ public class PaladinAbilityView extends View {
                 game.getActor().setCurrentMonster(enemyMonster);
             }
             
-            if(game.getActor().getPlayerStats().getMana() < AbilityList.Fireball.getResourceCost()){
+            if(game.getActor().getPlayerStats().getMana() < AbilityList.MinorHeal.getResourceCost()){
                 this.console.println("You don't have enough mana.");
             }
     }
@@ -112,7 +119,7 @@ public class PaladinAbilityView extends View {
                 game.getActor().setCurrentMonster(enemyMonster);
             }
             
-            if(game.getActor().getPlayerStats().getMana() < AbilityList.Fireball.getResourceCost()){
+            if(game.getActor().getPlayerStats().getMana() < AbilityList.Intimidate.getResourceCost()){
                 this.console.println("You don't have enough mana.");
             } 
     }

@@ -35,7 +35,7 @@ public class QuestControl {
     public void updateQuest(String questDesc){
         for (QuestLog q: game.getActor().getQuest()){
             if (q.getQuestDetails() == questDesc){
-                q.setProgress(q.getProgress()+21);
+                q.setProgress(q.getProgress()+1);
                 if (q.getProgress() > q.getObjective())
                     q.setProgress(q.getObjective());
             }
@@ -48,6 +48,7 @@ public class QuestControl {
                    game.getActor().getInventory().setShillings(game.getActor().getInventory().getShillings()+q.getRewardShillings());
                    game.getActor().getInventory().setXp(game.getActor().getInventory().getXp() + q.rewardXp);
                    game.getActor().getQuest().remove(q);
+                   break;
                }
            }
            

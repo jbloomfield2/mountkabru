@@ -28,7 +28,7 @@ public class InventoryControl {
         inv.getItems().get(0).setQuantity(3);
         inv.getItems().get(2).setQuantity(1);
         inv.getItems().get(1).setQuantity(4);
-        inv.setShillings(50);
+        inv.setShillings(100);
         inv.setXp(0);
         inv.setXpToNextLevel(250);
 
