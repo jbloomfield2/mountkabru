@@ -37,13 +37,13 @@ class TrainView extends View{
                 return true;
             case "D":
                 this.trainDefense();
-                break;
+                return true;
             case "M":
                 this.trainMana();
-                break;
+                return true;
             case "H":
                 this.trainHealth();
-                break;
+                return true;
             case "G":
                 GameMenuView gmv = new GameMenuView();
                 gmv.display();

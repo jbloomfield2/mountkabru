@@ -52,7 +52,7 @@ public class GameMenuView extends View{
                 return true;
             case "S":
                 this.saveGame();
-                break;
+                return true;
             case "H":
                 this.showHelp();
                 break;

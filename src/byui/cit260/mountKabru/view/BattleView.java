@@ -54,6 +54,11 @@ public class BattleView extends View{
                     this.victory();
                     return true;
                 }
+                
+                if (game.getActor().getPlayerStats().getHealth() < 0){
+                    this.fainted();
+                    return true;
+            }
                 break;
             case "B":
                 this.ability();
@@ -62,9 +67,17 @@ public class BattleView extends View{
                     this.victory();
                     return true;
                 }
+            if (game.getActor().getPlayerStats().getHealth() < 0){
+                this.fainted();
+                return true;
+            }
                 break;
             case "R":
                 boolean ran = this.runAway();
+                if (game.getActor().getPlayerStats().getHealth() < 0){
+                    this.fainted();
+                    return true;
+            }
                 return ran;
             default:
                 this.console.println("\n*** Invalid selection *** Try again");
@@ -83,8 +96,7 @@ public class BattleView extends View{
         enemyMonster.getStats().setHealth(enemyHealth);
         this.console.println("dealt " + damage + " damage to " + enemyMonster.getName());
         this.enemyTurn();
-        if (game.getActor().getPlayerStats().getHealth() < 0)
-            this.fainted();
+
         if (game.getActor().getPlayerStats().getHealth() < 9)
             this.console.println("WARNING Your Health is low! rest at the tavern or drink a potion!");
         this.updateDisplay();
@@ -119,6 +131,7 @@ public class BattleView extends View{
         } catch (BattleControlException ex) {
             this.console.println(ex.getMessage());
             ran = false;
+            this.enemyTurn();
         }
         return ran;
     }
@@ -152,12 +165,19 @@ public class BattleView extends View{
         this.console.println("\nYou found "+ shillings+" shillings" );
         game.getActor().setCurrentMonster(new EnemyActor());
         enemyMonster.getStats().setHealth(enemyMonster.getStats().getMaxHealth());//reset monsters health or they will already be dead next time
+        
+        
         QuestControl qc = new QuestControl();
         //update quests progress
         qc.updateQuest(QuestList.Win20Battles.getQUESTDETAILS());
         if (enemyMonster.getName() == ActorList.GiantSpider.getName())
             qc.updateQuest(QuestList.KillSpiders.getQUESTDETAILS());
-            
+        
+        String loot;
+        BattleControl bc = new BattleControl();
+        loot = bc.findLoot();
+        if (!"nothing".equals(loot))
+            this.console.println("found 1x " + loot);
     }
 
     private void enemyTurn() {

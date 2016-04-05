@@ -34,6 +34,38 @@ public class BattleControl {
                 
     }
    static Game game = MountKabru.getCurrentGame();
+
+    public String findLoot() {
+        Random rand = new Random();
+        int rnd = rand.nextInt(100);
+        InventoryControl ic = new InventoryControl();
+        String loot = "nothing";
+        
+        if (rnd <= 30){//30% chance to find loot
+            rnd = rand.nextInt(4);
+            
+            if (rnd == 1){
+                loot = "Health potion\t";
+                ic.addItem(loot);  
+            }
+            
+            if (rnd == 2){
+                loot = "Greater Health potion";
+                ic.addItem(loot);  
+            }
+            
+            if (rnd == 3){
+                loot = "Mana potion\t";
+                ic.addItem(loot);  
+            }
+            if (rnd == 4){
+                loot = "Greater mana potion";
+                ic.addItem(loot);  
+            }
+            
+        }
+        return loot;
+    }
     
     public double attack(double atk,double atkBonus,double def){
         Random rng = new Random();

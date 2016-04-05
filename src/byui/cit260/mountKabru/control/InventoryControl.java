@@ -25,10 +25,10 @@ public class InventoryControl {
             Item temp = new Item(items);
             inv.getItems().add(temp);
         }
-        inv.getItems().get(0).setQuantity(3);
+        inv.getItems().get(0).setQuantity(1);
         inv.getItems().get(2).setQuantity(1);
-        inv.getItems().get(1).setQuantity(4);
-        inv.setShillings(100);
+        inv.getItems().get(1).setQuantity(0);
+        inv.setShillings(50);
         inv.setXp(0);
         inv.setXpToNextLevel(250);
 
@@ -188,5 +188,14 @@ public class InventoryControl {
                    
            }
        }
+    }
+    
+    public void addItem(String item){
+        Inventory inv = game.getActor().getInventory();
+        for (Item i:inv.getItems()){
+            if (i.getItemType() == item){
+                i.setQuantity(i.getQuantity()+1);
+            }
+        }
     }
 }
