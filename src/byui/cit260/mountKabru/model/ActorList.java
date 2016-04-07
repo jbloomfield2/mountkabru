@@ -26,10 +26,11 @@ import java.io.Serializable;
     Ent("Ent",12,10,5,32),
     Werewolf("Werewolf",16,8,5,30),
     MountainLion("Mountain Lion",16,6,5,32),
-    MountainTroll("Mountain Troll",20,15,10,40),
-    Giant("Giant",20,15,10,50),
-    Griffin("Griffin",24,16,10,60),
-    Dragon("Dragon",35,25,15,100);
+    MountainTroll("Mountain Troll",20,15,10,50),
+    Giant("Giant",36,15,10,70),
+    Griffin("Griffin",35,16,10,80),
+    Dragon("Dragon",40,25,15,100),
+    MysteriousMaster("Mysterious Master",50,35,30,120);
     
     //private final String MONSTERABILITIES;
     private  Stats MONSTERSTATS;

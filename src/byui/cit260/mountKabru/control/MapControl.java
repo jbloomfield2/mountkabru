@@ -24,7 +24,7 @@ public class MapControl {
 
     static Locations createLocations() {
         Locations temp = new Locations();
-        EnemyActor enemies[]= new EnemyActor[16];
+        EnemyActor enemies[]= new EnemyActor[17];
         int i = 0;
         for (ActorList actors: ActorList.values()){//build array of monster data
             enemies[i] = new EnemyActor();

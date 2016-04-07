@@ -25,15 +25,15 @@ public class AdventureView extends View{
               " /                   /   /    \\            \\            `-. PLAINS"  
                 
                 + "\nChoose an area to visit"
-                + "\n======================================="
-                + "\nP-Plains recommended level 1-5"
-                + "\nJ-Jungle recommended level 5-15"
-                + "\nD-Dark Forest recommended level 10-20"
-                + "\nH-High Mountain recommended level 20+"
-                + "\nM-Show Game Menu"
+                + "\n==========================================================="
+                + "\nP-Plains recommended level 1"
+                + "\nJ-Jungle recommended level 3+"
+                + "\nD-Dark Forest recommended level 6+"
+                + "\nH-High Mountain recommended level 9(" 
+                + "\nM-Summit(confront mysterious master) reccommend level 10+"
+                + "\nG-Show Game Menu"
                 + "\nQ-return to previous menu"
-                + "\n=======================================");
-    }
+                + "\n===========================================================");    }
     @Override
     public boolean doAction(String input){
         
@@ -57,6 +57,9 @@ public class AdventureView extends View{
                 break;
             }
             case "M":{
+                this.goToSummit();
+            }
+            case "G":{
                 this.showGameMenu();
                 break;
             }
@@ -93,6 +96,11 @@ public class AdventureView extends View{
     private void showGameMenu() {
         GameMenuView menu = new GameMenuView();
         menu.display();
+    }
+
+    private void goToSummit() {
+        SummitView sv = new SummitView();
+        sv.display();
     }
     
 }
