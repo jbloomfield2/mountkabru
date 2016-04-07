@@ -19,11 +19,12 @@ public class EndView extends View{
         super("With the defeat of the mysterious master the monsters "
                 + "surrounding mount Kabru decrease in numbers and the area"
                 + "is once again safe. Thanks for playing!");
-        this.console.println("you completed the game in " + game.getDay() + " days");
+        
     }
     
     @Override
     public boolean doAction(String input){
+        this.console.println("you completed the game in " + game.getDay() + " days");
      this.console.println("The game will now close");
      System.exit(0);
         

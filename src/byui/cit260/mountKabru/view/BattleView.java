@@ -179,7 +179,7 @@ public class BattleView extends View{
         if (!"nothing".equals(loot))
             this.console.println("found 1x " + loot);
         EndView end = new EndView();
-        if (enemyMonster.getName() == ActorList.MysteriousMaster.getName())
+        if (enemyMonster.getName() == null ? ActorList.MysteriousMaster.getName() == null : enemyMonster.getName().equals(ActorList.MysteriousMaster.getName()))
             end.display();
     }
 
